@@ -555,12 +555,15 @@ function sweetCerrar() {
 function sweetPagar() {
     let timerInterval;
 Swal.fire({
-  html: "<p>Te estamos dirigiendo a la pasarela de pagos...</p>",
+  html: "<h1>🛸</h1><p>En <b></b> milisegundos te estaremos dirigiendo a la pasarela de pagos...</p>",
   timer: 3000,
   timerProgressBar: true,
   didOpen: () => {
     Swal.showLoading();
-    timerInterval = setInterval();
+    const timer = Swal.getPopup().querySelector("b");
+    timerInterval = setInterval(()=>{
+        timer.textContent = `${Swal.getTimerLeft()}`;
+    }, 100);
   },
   willClose: () => {
     clearInterval(timerInterval);
