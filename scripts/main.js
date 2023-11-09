@@ -475,7 +475,8 @@ function armarDOM(id = "") {
     formularioSelector.addEventListener("submit", (event) => {
         event.preventDefault();
         const inputs = event.target.elements;
-        if (parseInt(inputs[2].value<1) || inputs[2].value == "" ) {
+        console.log("parse int de negativo "+parseInt(inputs[2].value));
+        if (isNaN(inputs[2].value) || inputs[2].value < 1 ) {
             sweetCantidad();
         } else {
             enviarFormularioSelector(inputs);
@@ -508,18 +509,14 @@ function sweet(id = undefined) {
             cancelButtonAriaLabel: 'Pulgar abajo'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log("is confirmed");
                 sessionStorage.removeItem("compra");
                 mostrarTodo(id);
                 armarDOM(id);
                 document.querySelector("#section__entradas").style["display"]="block";
         
-            } else {
-                console.log("is denied");
-            }
+            } //aca estaba else result.isdenied
         })
     } else {
-        console.log("session vacio");
         mostrarTodo(id);
         armarDOM(id);
         document.querySelector("#section__entradas").style["display"]="block";
@@ -592,7 +589,7 @@ Swal.fire({
 }
 
 const sweetCantidad = (condicion) => {
-texto = condicion==="mayor"? "<p>Lo sentimos, la sala no cuenta con la cantidad de entradas libres solicitada.</p><p> Ingresá una cantidad menor o, si querés organizar un evento empresarial a sala completa, escribinos a info@vintage.com</p>":"<p>🤔 ¿No te habrás olvidado de ingresar la cantidad de entradas? Para seguir adelante deberás ingresar una cantidad igual o mayor a 1.</p>"
+texto = condicion==="mayor"? "<p>Lo sentimos, la sala no cuenta con la cantidad de entradas libres solicitada.</p><p> Ingresá una cantidad menor o, si querés organizar un evento empresarial a sala completa, escribinos a info@vintage.com</p>":"<p>🤔 ¿No te habrás olvidado de ingresar la cantidad de entradas? ¿O habrás ingresado un número menor que 1? Para seguir adelante deberás ingresar una cantidad igual o mayor a 1.</p>"
  
 Swal.fire({
     icon:'error',
