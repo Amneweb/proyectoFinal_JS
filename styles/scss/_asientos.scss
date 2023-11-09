@@ -1,0 +1,52 @@
+.platea {
+    width:auto;
+    background-color: white;
+    border:1px solid #cccccc;
+    height:auto;
+    padding:0 30px 30px 30px;
+    align-self: flex-start;
+}
+.asiento {
+    width:20px;
+    height:20px;
+    border:solid 1px;
+    background-color: white;
+    border-radius:50%;
+    cursor:pointer;
+    appearance: none;
+    
+    &:checked {
+        background-color:palegreen;
+    }
+    
+}
+.libre {
+    border-color:rgb(4, 163, 39);
+    background-color:rgb(217, 250, 217);
+    &:hover {
+        background-color:rgb(49, 245, 91);
+    }
+}
+.ocupado {
+    background-color:#cccccc;
+    border-color:#cccccc;
+}
+.indeterminado {
+    /*background-color:grey;*/
+    border-color:lighten($color: grey, $amount: 1);
+    background-color:white;
+}
+.fila {
+    width:100%;
+    display:flex;
+}
+.entradas__input {
+    display:flex;
+}
+.pantalla {
+    font-family: var(--oswald);
+    border-bottom:1px solid black;
+    margin-bottom:10px;
+    padding:10px;
+    text-align: center;
+}

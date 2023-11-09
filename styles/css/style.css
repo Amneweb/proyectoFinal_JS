@@ -1,0 +1,964 @@
+@charset "UTF-8";
+:root {
+  --source: "Source Serif 4", serif;
+  --poppins: "Poppins", sans-serif;
+  --oswald: "Oswald", sans-serif;
+  --logo: "Fascinate", cursive;
+  --size-p: 16px;
+  --size-h1: 3em;
+  --size-h2: 3em;
+  --size-h3: 2em;
+  --weight-h1: 900;
+  --weight-h: 700;
+  --weight-p: 400;
+  --weight-p-bold: 600;
+  --rojo-butaca: #cc2d2c;
+  --hunyadi-yellow: #E3A446ff;
+  --smoky-black: #080402ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+li {
+  font-family: var(--poppins);
+  font-weight: var(--weight-p);
+  font-size: var(--size-p);
+  color: var(--smoky-black);
+}
+
+h1 {
+  font-family: var(--source);
+  font-style: italic;
+  font-weight: var(--weight-h1);
+  font-size: var(--size-h1);
+  color: var(--smoky-black);
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--oswald);
+  font-weight: var(--weight-h);
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: var(--size-h2);
+}
+
+h3 {
+  font-size: var(--size-h3);
+}
+
+h4 {
+  font-size: var(--size-h4);
+}
+
+h5 {
+  font-size: var(--size-h5);
+}
+
+/* drop down select según moderncss.dev */
+/* 1-reseteando estilos*/
+select#select__pelicula,
+select#select__funcion {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E3A446ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+.boton, .boton-ver-mas, .boton_pagar, input#entradas,
+input#boton__entradas, select#select__pelicula,
+select#select__funcion {
+  display: block;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: rgb(18, 17, 17);
+  line-height: 1.3;
+  padding: 0.6em 0.9em 0.5em 0.8em;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 5px;
+}
+
+select#select__pelicula,
+select#select__funcion {
+  background-repeat: no-repeat, repeat;
+  background-position: right 1em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+}
+select#select__pelicula option.select--disabled,
+select#select__funcion option.select--disabled {
+  color: grey;
+}
+
+/*para sacar flecha en explorers viejos*/
+select::-ms-expand {
+  display: none;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--smoky-black);
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__ul {
+  list-style-type: none;
+}
+.nav__ul li {
+  display: inline-block;
+  font-family: var(--oswald);
+  padding: 20px;
+  font-size: 20px;
+}
+.nav__a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+.nav__a:hover {
+  color: var(--rojo-butaca);
+}
+.nav__a i {
+  margin-right: 20px;
+}
+.nav__a--entradas {
+  background-color: var(--rojo-butaca);
+  color: white;
+  padding: 20px 50px 20px 50px;
+  border-radius: 5px;
+}
+.nav__a--entradas:hover {
+  background-color: white;
+  color: var(--rojo-butaca);
+  animation: transicion-entradas 0.5s;
+}
+.nav__a--entradas i {
+  margin-right: 20px;
+}
+
+@keyframes transicion-entradas {
+  from {
+    background: var(--rojo-butaca);
+    color: var(--licorice);
+  }
+  to {
+    background: white;
+    color: var(--rojo-butaca);
+  }
+}
+.logo__p {
+  font-family: var(--logo);
+  font-size: var(--size-h1);
+  padding: 10px 20px 20px 20px;
+  color: white;
+}
+.logo__p::after {
+  content: "";
+  background-image: url(../../assets/imagenes/estrellaVintage.png);
+  width: 50px;
+  height: 50px;
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-position: 0 0;
+  left: 0;
+}
+
+.snacks__input {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  color: var(--smoky-black); /* white;*/
+  padding: 3px 5px;
+  width: 80%;
+  max-width: 80%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+  margin: 5px auto 10px auto;
+}
+.snacks__input:hover {
+  background-color: white;
+  color: var(--rojo-butaca);
+}
+
+.boton_pagar {
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
+.boton_pagar i {
+  color: var(--hunyadi-yellow);
+  margin-right: 10px;
+}
+
+.basura {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.title-final {
+  font-family: var(--logo);
+  font-size: var(--size-h1);
+  padding: 10px 20px 20px 20px;
+  color: var(--smoky-black);
+  margin-top: 30px;
+}
+.title-final::after {
+  content: "";
+  background-image: url(../../assets/imagenes/estrellaVintage.png);
+  width: 50px;
+  height: 50px;
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-position: 0 0;
+  left: 0;
+}
+
+.final p {
+  text-align: justify;
+}
+.final .canales {
+  display: flex;
+  justify-content: center;
+}
+.final a {
+  color: var(--smoky-black);
+  font-size: var(--size-h3);
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.final a:hover {
+  color: var(--rojo-butaca);
+}
+
+.boton-final {
+  background-color: var(--rojo-butaca);
+}
+
+.boton-ver-mas {
+  width: 50%;
+}
+
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid var(--hunyadi-yellow);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  display: none;
+  margin: 10px auto 10px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.hero {
+  background-image: url(../../assets/imagenes/telon-cine.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  min-height: 600px;
+}
+.hero__div {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero__p--principal {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: calc(var(--size-h1) * 1.2);
+  font-family: var(--oswald);
+  font-weight: var(--weight-p-bold);
+}
+.hero__p--principal a {
+  border: dotted 10px white;
+  display: block;
+  color: var(--rojo-butaca);
+  padding: 20px 30px;
+}
+.hero__p--principal a:hover {
+  color: white;
+  border: dotted 10px var(--rojo-butaca);
+}
+.hero__p--secundario {
+  font-style: italic;
+  font-size: var(--size-h3);
+  text-align: center;
+  font-family: var(--normal);
+  margin-top: 20px;
+  color: var(--rojo-butaca);
+}
+
+.main {
+  display: flex;
+  padding: 80px 50px 80px 50px;
+  justify-content: space-evenly;
+}
+.main form {
+  text-align: center;
+}
+
+#section__entradas, #section__api {
+  display: none;
+  position: fixed;
+  border-radius: 10px;
+  top: 5%;
+  left: 5%;
+  height: 90%;
+  width: 90%;
+  z-index: 10;
+  outline: 9999px solid rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+#section__entradas h2, #section__api h2 {
+  font-size: var(--size-h3);
+}
+#section__entradas h3, #section__api h3 {
+  font-size: 1.5em;
+}
+
+#datosPelicula {
+  margin: 40px;
+}
+
+#actores {
+  margin: 40px;
+}
+
+#directores {
+  margin: 40px;
+}
+
+.section__entradas--cerrar {
+  position: fixed;
+  display: block;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  color: var(--hunyadi-yellow);
+}
+
+.section__api--cerrar {
+  position: fixed;
+  display: block;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  color: var(--hunyadi-yellow);
+}
+.section__api--cerrar i.cerrar {
+  font-size: var(--size-h3);
+}
+.section__api--cerrar i.cerrar:hover {
+  color: var(--rojo-butaca);
+  animation-name: cerrar-entradas;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+}
+
+.entradas__select {
+  width: 100%;
+}
+
+#entradas__funcion {
+  display: none;
+}
+
+.bienvenidos {
+  display: flex;
+  margin: 50px;
+  padding: 50px;
+  border: dotted 5px var(--rojo-butaca);
+  align-items: center;
+  background-image: url(../../assets/imagenes/estrellaVintageTopRight.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.bienvenidos__h1 {
+  width: 40%;
+}
+.bienvenidos__p--vintage {
+  font-family: var(--source);
+  font-style: italic;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+.bienvenidos__span {
+  color: var(--hunyadi-yellow);
+}
+
+.negro {
+  background-color: var(--smoky-black);
+  color: var(--rojo-butaca);
+  background-image: url(../../assets/imagenes/estrellaVintageTopRight--snacks.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.rojo {
+  background-color: var(--rojo-butaca);
+  color: white;
+  background-image: url(../../assets/imagenes/estrellaVintageTopRight--snacks.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.gris {
+  background-color: #f5f5f5;
+  color: var(--smoky-black);
+}
+
+.section__titulo {
+  padding: 80px 50px 20px 0px;
+  margin: auto 50px;
+}
+.section__titulo i {
+  margin-right: 30px;
+}
+.section__titulo--cartelera {
+  border-bottom: dotted 10px var(--rojo-butaca);
+}
+.section__titulo--salas {
+  border-bottom: dotted 10px var(--smoky-black);
+}
+.section__titulo--entradas {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px;
+}
+.section__titulo--entradas h2::after {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  background-image: url(../../assets/imagenes/estrellaTextoVintage.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.section__titulo--entradas i.cerrar {
+  font-size: var(--size-h3);
+}
+.section__titulo--entradas i.cerrar:hover {
+  color: var(--rojo-butaca);
+  animation-name: cerrar-entradas;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+}
+.section__titulo--snacks {
+  border-bottom: dotted 10px #eeeeee;
+}
+.section__titulo--intro {
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  width: 70%;
+  padding: 30px;
+  margin: 50px auto auto auto;
+}
+.section__titulo--intro i {
+  margin-right: 10px;
+  color: var(--hunyadi-yellow);
+}
+.section__titulo__p {
+  color: #eeeeee;
+}
+
+@keyframes cerrar-entradas {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.resumen__datospeli, .entradas__datospeli, .cartelera__datospeli {
+  display: grid;
+  grid-template-columns: 25% 70%;
+  padding: 20px;
+  row-gap: 10px;
+}
+
+.cartelera__contenedor {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  /* &> * {
+       scroll-snap-align: center;
+   }*/
+}
+.cartelera__contenedor::-webkit-scrollbar {
+  display: none;
+}
+.cartelera__div--imagen {
+  width: 30%;
+  min-width: 28%;
+  margin-right: 2%;
+  position: relative;
+}
+.cartelera__div--imagen:hover .cartelera__div--overlay {
+  height: 100%;
+}
+.cartelera__img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+.cartelera__div--overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--rojo-butaca);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+}
+.cartelera__boton {
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  color: #eeeeee;
+  font-family: var(--oswald);
+  font-size: var(--size-p);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px;
+  border: solid 1px #eeeeee;
+  text-align: center;
+}
+.cartelera__icono {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  font-size: 3em;
+  padding-top: 15%;
+  text-shadow: 2px 2px 3px #000000;
+  color: #ffffff;
+}
+.cartelera__iconoi {
+  margin: 50% auto;
+}
+
+.to-right--cartelera, .to-right--snacks {
+  right: 30px;
+}
+
+.to-left--cartelera, .to-left--snacks {
+  left: 30px;
+}
+
+.entradas__selectores {
+  width: 100%;
+}
+
+.entradas__imagen {
+  width: 30%;
+  overflow: hidden;
+}
+.entradas__imagen img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.entradas__datospeli {
+  border-radius: 10px;
+  width: 65%;
+}
+
+.resumen__datospeli {
+  text-align: left;
+}
+.resumen__datospeli .datospeli__item {
+  color: var(--smoky-black);
+}
+
+.datospeli__item {
+  color: #eeeeee;
+}
+.datospeli__item--left {
+  font-family: var(--oswald);
+  font-weight: var(--weight-h);
+}
+.datospeli__item--right {
+  font-family: var(--poppins);
+}
+
+.entradas {
+  column-gap: 20px;
+  justify-items: stretch;
+  display: flex;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+.entradas form {
+  text-align: center;
+}
+
+.entradas__cantidad {
+  display: none;
+}
+
+.entradas__izquierda {
+  width: 40%;
+}
+
+.entradas__derecha {
+  width: 60%;
+  display: flex;
+}
+
+.salas__p--infantil::after, .salas__p--clasica::after, .salas__p--premium::after {
+  content: "";
+  display: inline;
+  background-repeat: repeat-x;
+  position: absolute;
+  background-size: 20px 20px;
+  background-image: url(../../assets/imagenes/estrellaVintage.png);
+}
+
+.salas {
+  flex-direction: column;
+}
+.salas__p--premium::after {
+  width: 100px;
+  height: 20px;
+}
+.salas__p--clasica::after {
+  width: 80px;
+  height: 20px;
+}
+.salas__p--infantil::after {
+  width: 60px;
+  height: 20px;
+}
+
+.salas__div {
+  display: grid;
+  grid-template-columns: 30% 15% 55%;
+  grid-template-rows: auto auto auto;
+  margin-bottom: 50px;
+  padding: 40px;
+  background-color: #f5f5f5;
+}
+
+.salas__item--info {
+  padding: 20px;
+}
+.salas__item--titulo {
+  padding-left: 30px;
+  padding-top: 20px;
+}
+.salas__item--titulo p {
+  font-family: var(--oswald);
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+.salas__item--foto {
+  grid-area: 1/1/4/2;
+}
+.salas__item--foto img {
+  max-width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.select {
+  background-color: white;
+}
+
+.snacks {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+}
+.snacks::-webkit-scrollbar {
+  display: none;
+}
+.snacks__item {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 22%;
+  min-width: 20%;
+  margin: 10px;
+}
+.snacks__item img {
+  max-width: 100%;
+}
+.snacks__item--contenido {
+  padding: 20px;
+}
+.snacks__p {
+  color: #eeeeee;
+}
+.snacks__p--nombre {
+  font-family: var(--source);
+  font-style: italic;
+  margin-bottom: 30px;
+  font-size: var(--size-h3);
+}
+
+.descripcion {
+  margin: 20px 100px 0 100px;
+}
+
+.asientos__elegidos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+.asientos__elegidos p {
+  border: solid 1px var(--smoky-black);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+.asientos__elegidos p.aclaracion {
+  border: solid 1px var(--hunyadi-yellow);
+  border-radius: 5px;
+  font-size: 0.8em;
+  background-color: lightyellow;
+}
+.asientos__elegidos p.aclaracion i {
+  color: var(--hunyadi-yellow);
+  margin-right: 10px;
+}
+
+#botones {
+  display: flex;
+}
+
+.boton {
+  cursor: pointer;
+}
+.boton:hover {
+  background-color: white;
+}
+.boton__aceptar {
+  border-color: rgb(4, 163, 39);
+  width: 50%;
+}
+.boton__cambiar {
+  border-color: var(--rojo-butaca);
+  width: 50%;
+}
+
+.platea {
+  display: none;
+}
+
+.carrito {
+  background-color: #e5e4e2; /*var(--hunyadi-yellow);*/
+  border-radius: 5px;
+}
+.carrito h3, .carrito p {
+  color: var(--smoky-black); /*#eeeeee;*/
+  margin: 20px 20px;
+}
+.carrito__flexSnacks {
+  margin: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+}
+.carrito__flexSnacks .snacks__item {
+  margin: 5px;
+  display: flex;
+  width: 23%;
+}
+.carrito__flexSnacks .snacks__item p {
+  font-size: 0.8em;
+  margin: 5px;
+}
+.carrito__flexSnacks .snacks__item--contenido {
+  padding: 5px;
+}
+.carrito__flexSnacks .snacks__item img {
+  max-width: 80%;
+  margin: auto;
+}
+
+.input_escondido {
+  display: none;
+}
+
+.lista-snacks {
+  border: 1px solid var(--smoky-black);
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+.lista-snacks img {
+  width: 10%;
+}
+.lista-snacks input {
+  align-self: stretch;
+}
+
+#total-gral, .totales {
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px auto 20px 10px;
+}
+
+.totales {
+  border: 1px solid var(--hunyadi-yellow);
+  background-color: lightyellow;
+}
+.totales p {
+  font-weight: bolder;
+}
+
+#total-gral {
+  background-color: var(--smoky-black);
+}
+#total-gral p {
+  color: white;
+}
+
+.boton__pagar {
+  display: none;
+}
+
+.perfilActor {
+  display: none;
+  background-color: white;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 30px;
+}
+
+.platea {
+  width: auto;
+  background-color: white;
+  border: 1px solid #cccccc;
+  height: auto;
+  padding: 0 30px 30px 30px;
+  align-self: flex-start;
+}
+
+.asiento {
+  width: 20px;
+  height: 20px;
+  border: solid 1px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  appearance: none;
+}
+.asiento:checked {
+  background-color: palegreen;
+}
+
+.libre {
+  border-color: rgb(4, 163, 39);
+  background-color: rgb(217, 250, 217);
+}
+.libre:hover {
+  background-color: rgb(49, 245, 91);
+}
+
+.ocupado {
+  background-color: #cccccc;
+  border-color: #cccccc;
+}
+
+.indeterminado {
+  /*background-color:grey;*/
+  border-color: #838383;
+  background-color: white;
+}
+
+.fila {
+  width: 100%;
+  display: flex;
+}
+
+.entradas__input {
+  display: flex;
+}
+
+.pantalla {
+  font-family: var(--oswald);
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

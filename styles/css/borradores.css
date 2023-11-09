@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.sidebar {
+  position: absolute;
+  color: #000;
+  min-width: 14em;
+  width: 14em;
+  font-size: 1.5em;
+  padding-left: 2em;
+  text-align: center;
+}
+  .sidebar h2 {
+    font-family: 'Lexend Tera', sans-serif;
+  }
+  
+  .sidebar.icon {
+    font-size: 2.5em;
+    animation: pointRight 1.5s ease-in-out infinite;
+  }
+
+
+.scrolling-carousel {
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  padding-right: 1em;
+  margin-left: 20em;
+animation: peekIn 1.5s ease-in-out;
+}
+.scrolling-carousel .card {
+    border-radius: 0.5em;
+    background: #fff;
+    min-width: 20em;
+    width: 20em;
+    margin-left: 1em;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 0px 11px 35px -6px rgba(27,32,36,1);
+    -moz-box-shadow: 0px 11px 35px -6px rgba(27,32,36,1);
+    box-shadow: 0px 11px 35px -6px rgba(27,32,36,1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+  }
+    .scrolling-carousel .card::after {
+        content: '';
+        height: 100%;
+        width: 20em;
+        background: rgb(9,33,46);
+        background: linear-gradient(0deg, rgba(9,33,46,1) 10%, rgba(9,33,46,0) 100%);
+        position: absolute;
+        z-index: 2;
+    }
+    
+    .scrolling-carousel .card-details {
+      color: #fff;
+      position: absolute;
+      bottom: 2em;
+      left: 1.5em;
+      z-index: 3;
+      width: 85%;
+    }
+      .scrolling-carousel .card-header {
+         transition: transform 0.3s ease-in-out;
+        }
+         .scrolling-carousel .card-title {
+          margin-bottom: 0.25em;
+        }
+
+      .scrolling-carousel  .card-description {
+          font-size: 0.75em;
+          line-height: 1.5em;
+          margin-bottom: 1em;
+        }  
+      
+            
+      .scrolling-carousel  .card-rating {
+        display: none;
+        position: absolute;
+        bottom: -0.25em;
+      
+        }
+    
+    
+    .card-call-to-action {
+      opacity: 0;
+      position: absolute;
+      right: 0em;
+      bottom: 0.5em;
+      transform: translateY(1.5em);
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    
+    
+
+
+.btn {
+  background: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.5em 1em;
+  border-radius: 0.25em;
+  margin-left: 0.25em;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes peekIn {
+  0% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(0.25em);
+  }
+  65% {
+    transform: translateX(-1em);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pointRight {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-0.25em);
+  }
+  35% {
+    transform: translateX(0.15em);
+  }
+  55%{
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
