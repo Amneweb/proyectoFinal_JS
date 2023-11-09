@@ -578,17 +578,20 @@ select::-ms-expand {
   transition: 0.5s ease;
 }
 .cartelera__boton {
-  width: 80%;
-  margin: auto;
+  width: 40%;
   border-radius: 5px;
   color: #eeeeee;
   font-family: var(--oswald);
   font-size: var(--size-p);
   font-weight: 700;
   text-transform: uppercase;
-  padding: 10px;
+  padding: 5px;
   border: solid 1px #eeeeee;
   text-align: center;
+}
+.cartelera__boton:hover {
+  background-color: #eeeeee;
+  color: var(--rojo-butaca);
 }
 .cartelera__icono {
   position: absolute;
@@ -609,6 +612,20 @@ select::-ms-expand {
 
 .to-left--cartelera, .to-left--snacks {
   left: 30px;
+}
+
+.contenedorBotones {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tmdb {
+  padding: 20px;
+}
+.tmdb p {
+  font-size: 0.8em;
+  color: #eeeeee;
+  text-align: center;
 }
 
 .entradas__selectores {

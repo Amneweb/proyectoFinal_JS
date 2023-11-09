@@ -106,7 +106,7 @@ function armarDatosPeli(PELIELEGIDA) {
         PELIELEGIDA.genero,
         PELIELEGIDA.edad,
         PELIELEGIDA.rating,
-        PELIELEGIDA.resumen
+        acortarPalabra(PELIELEGIDA.resumen,120)
     ]
     TITULOS.forEach((titulo, llave) => {
         const itemTitulo = document.createElement('div');

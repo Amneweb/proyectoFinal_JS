@@ -305,20 +305,20 @@
     }
 
     &__boton {
-        //background-color:#eeeeee;
-        width:80%;
-        margin:auto;
+        width:40%;
         border-radius: 5px;
-        //color:var(--rojo-butaca);
         color:#eeeeee;
         font-family:var(--oswald);
         font-size: var(--size-p);
         font-weight: 700;
         text-transform: uppercase;
-        padding:10px;
+        padding:5px;
         border:solid 1px #eeeeee;
         text-align: center;
-        //position:absolute;
+        &:hover {
+            background-color:#eeeeee;
+            color:var(--rojo-butaca);
+        }
     }
     &__icono {
         position:absolute;
@@ -339,6 +339,18 @@
 }
 .to-left--cartelera, .to-left--snacks {
     left:30px;
+}
+.contenedorBotones {
+    display:flex;
+    justify-content:space-evenly;
+}
+.tmdb {
+padding:20px;
+    p {
+        font-size: 0.8em;
+        color:#eeeeee;
+        text-align: center;
+    }
 }
 
 .entradas__selectores {
