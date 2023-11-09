@@ -1,41 +1,13 @@
-// **** **** **** DECLARACIONES **** **** **** //
-// //////// FUNCTIONS ///////////  //
-/**
- * 
- * @abstract para mostrar los precios con un formato de currency
- */
 const currency = (valor) => valor.toLocaleString('es-ar', {
     style: 'currency',
     currency: 'ARS',
     minimumFractionDigits: 2
 });
 
-/**
- *
- * @abstract Permite mostrar las fechas en el formato DD/MM/YYYY
- * @param {number} anio Pasamos año como número
- * @param {number} dia Dia como número, sin 0 adelante cuando es < 10
- * @param {number} mes Mes como número (teniendo en cuenta que enero = 0 y diciembre = 11)
- * @returns fecha formateada con formato local
- * 
- */
 const formatearDia = (anio, mes, dia) => new Date(anio, mes, dia).toLocaleDateString();
-/**
- * 
- * @abstract Para truncar un string a un máximo de caracteres
- * @param {string} palabra la palabra que eventualmente quiero acortar
- * @param {number} caracteres la cantidad de caracteres máxima
- * @returns la palabra cortada
- * 
- */
+
 const acortarPalabra = (palabra, caracteres) => palabra.length > caracteres ? palabra.substring(0, caracteres) + "..." : palabra;
-/**
- *
- * @abstract Para contar asientos libres en la sala (en un vector de ceros y unos, cuenta la cantidad de ceros) Primero hace un flat de la matriz (la convierte en un vector de 1 sola dimensión) y luego, con reduce, cuenta los 0
- * @param {array} matriz La matriz de 0 y 1 (en este caso es el array con los asientos libres (0) y ocupados (1))
- * @returns cantidad de 0, es decir la cantidad de asientos vacíos en la matriz
- * 
- */
+
 const cerosEnMatriz = (matriz) => {
     const vector = matriz.flat();
     const contador = vector.reduce(
@@ -44,16 +16,7 @@ const cerosEnMatriz = (matriz) => {
     );
     return contador;
 }
-/**
- *
- * @abstract Calcula el precio de las entradas según la sala y el día de la función
- * @param {number} sala El valor del index del vector salas
- * @param {number} dia
- * @param {number} anio 
- * @param {number} mes Estos 3 parámetros pasan a la función formatearDia
- * @returns precio de la función correspondiente. Se calcula en base a un PRECIOBASE que es una variable global, no se pasa como parámetro
- * 
- */
+
 function calcularPrecio(sala, dia, mes, anio) {
     let precio;
     switch (sala) {
@@ -78,42 +41,21 @@ function calcularPrecio(sala, dia, mes, anio) {
     }
     return precio;
 }
-/**
- *
- * @abstract Para los asientos armo una matriz de filas y columnas, donde cada asiento ocupado tiene el valor 1 y el libre el valor 0. Cada vez que se genera una función (esto se haría en el backend), se inicializa la matriz con todos valores 0, porque todos los asientos están desocupados. Cuando un usuario compra entradas, el vector de asientos se modifica y los lugares elegidos pasan a tener valor 1. Esta función genera esa matriz con todos los asientos en 0.
- * @param {number} sala El valor del index del vector salas. A partir de ahí se busca en el vector salas el valor de las filas y columnas de la sala correspondiente
- * @returns array con valores 0
- * 
- */
+
 function inicializarAsientos(sala) {
     const filasSala = salas[sala].filas;
     const columnasSala = salas[sala].columnas;
     asientos = new Array(filasSala).fill().map(() => new Array(columnasSala).fill(0));
     return asientos;
 }
-/**
- *
- * @abstract Esta función se usa sólo para este simulador. En la vida real no se usaría. Lo que hace es asignarles valores 0 y 1 aleatoriamente a los asientos de la sala según la función elegida
- * @param {number} funcion El valor del index del vector funcion. A partir de ahí se busca en el vector salas el valor de las filas y columnas de la sala correspondiente
- * @var filasFuncion Cantidad de filas en la sala de la funcion correspondiente
- * @var columnasFuncion Cantidad de asientos por fila en la sala de la funcion correspondiente
- * @returns matriz con valores 0 y 1
- * 
- */
+
 function simularOcupacion(funcion) {
     const filasFuncion = salas[funcion.sala].filas;
     const columnasFuncion = salas[funcion.sala].columnas;
     asientos = new Array(filasFuncion).fill().map(() => new Array(columnasFuncion).fill().map(() => Math.round(Math.random())));
     return asientos;
 }
-/**
- *
- * @abstract Agrega un esquema de la platea al dom, para que el usuario elija el asiento. Cada asiento se representa con un círculo, que en realidad es un checkbox. Los círculos grises representan asientos ocupados, son checkboxes en estado disabled y tienen clase "ocupado". Los asientos libres tienen clase "libre".
- * @param {array} asientosFuncionElegida Matriz de filas y columnas con ocupación de asientos simulada con la función simularOcupacion
- * @param {Node} DOMplatea nodo del DOM al que le agregamos los 'asientos'
- * @returns modifica el DOM, generando una grilla en la que cada checkbox tien un id del tipo f1-c1 (fila 1 - columna 1)
- * 
- */
+
 function dibujarPlatea(asientos) {
     const FRAGMENTO = new DocumentFragment();
     const pantalla = document.createElement("div");
@@ -141,14 +83,7 @@ function dibujarPlatea(asientos) {
     });
     return FRAGMENTO;
 }
-/**
- * 
- * @abstract dibujar las div con info de la película, puede ser en la sección cartelera o cuando se compran entradas
- * @param {object} PELIELEGIDA objeto peli con todos los datos de la película elegida en el input selector de funciones
- * @param {Element} DOMdatospeli div a la derecha del selector
- * @returns un DocumentFragment con la tabla que se muestra en las div overlay de la cartelera y en la div roja que aparce a la derecha del selector cuando el usuario elige la peli
- * 
- */
+
 function armarDatosPeli(PELIELEGIDA) {
     const FRAGMENTO = new DocumentFragment();
     const TITULOS = [
@@ -185,12 +120,7 @@ function armarDatosPeli(PELIELEGIDA) {
     });
     return FRAGMENTO;
 }
-/**
- * 
- * @abstract dibujar la div de snacks en la página
- * @returns un DocumentFragment con las cards de los snacks
- * 
- */
+
 function dibujarSnacks(Snack) {
     const FRAGMENTO = new DocumentFragment();
     const snacks__item = document.createElement("div");
@@ -213,12 +143,7 @@ function dibujarSnacks(Snack) {
     FRAGMENTO.append(snacks__item);
     return FRAGMENTO;
 }
-/**
- * 
- * @abstract dibujar la div de snacks en la sección de compra de entradas, una vez elegidas la película y los asientos
- * @returns un DocumentFragment con las cards de los snacks
- * 
- */
+
 function dibujarSnacksEnEntradas(Snack) {
     const FRAGMENTO = new DocumentFragment();
     const snacks__item = document.createElement("div");
@@ -248,11 +173,6 @@ function dibujarSnacksEnEntradas(Snack) {
     return FRAGMENTO;
 }
 
-/**
- * 
- * @abstract dibuja el input select de las películas. Si el proceso se inicia desde el botón en el menú o desde cualquier botón general, el selector muestra "elegí la película". Si el proceso se inicia desde la cartelera (posters con overlays), el selector ya muestra la película elegida.
- * 
- */
 function dibujarSelectorPeliculas(id = "") {
     const FRAGMENTO = new DocumentFragment();
     let pelisReordenadas;
@@ -278,10 +198,7 @@ function dibujarSelectorPeliculas(id = "") {
     );
     return FRAGMENTO;
 }
-/**
- * @abstract dibuja la div roja a la derecha del selector 
- * @param {*} id id de la película seleccionada
- */
+
 function dibujarDatosPeli(id) {
     const PELIELEGIDA = pelis.find((element) => element.id === id);
     DOMdatospeli = document.querySelector(".entradas__datospeli");
@@ -292,10 +209,6 @@ function dibujarDatosPeli(id) {
     DOMimagenPeli.innerHTML = `<img src="assets/imagenes/peliculas/${PELIELEGIDA.id}.jpg" alt="Poster película elegida">`;
 }
 
-/**
- * 
- * para armar el selector de funciones en base a la peli elegida
- */
 function dibujarSelectorFunciones(id) {
     const DOMdivSelectorFunciones = document.querySelector("#entradas__funcion");
     const propiedadesFunciones = window.getComputedStyle(DOMdivSelectorFunciones);
@@ -314,10 +227,7 @@ function dibujarSelectorFunciones(id) {
         DOMselectorFunciones.appendChild(optionFuncion);
     });
 };
-/**
- * 
- * @abstract cuando se carga el documento no se ve la sección de compra de entradas. Cuando se hace click en el botón de comprar se arma primero el esqueleto de esa parte y luego la interacción con el usuario desde la function armarDOM()
- */
+
 function mostrarTodo() {
     divEntradas = document.querySelector("#section__entradas");
     divEntradas.innerHTML =
@@ -359,11 +269,7 @@ function mostrarTodo() {
             </div>
         </section>`;
 }
-/**
- * 
- * @param {Array} Elegidos array con el id de los asientos seleccionados (provienen de los checkboxes)
- * @returns muestra en la pantalla las filas y número de butaca, y genera un array sólo con el id de los elegidos
- */
+
 function mostrarAsientos(Elegidos) {
     let COORDENADAS_ASIENTOS = "";
     const MOSTRAR_ASIENTOS = document.querySelector(".asientos__elegidos");
@@ -376,12 +282,7 @@ function mostrarAsientos(Elegidos) {
     MOSTRAR_ASIENTOS.innerHTML = COORDENADAS_ASIENTOS;
     return ElegidosID;
 }
-/**
- * 
- * @abstract evalua la situación de los asientos seleccionados por el usuario
- * @param {Event} event evento de click en los checkboxes de la platea
- * @param {*} entradasRequeridas cantidad de entradas a comprar
- */
+
 function seleccionDeAsientos(event, entradasRequeridas) {
     idSeleccionado = event.target.id;
     DOMplatea = document.querySelector("#platea");
@@ -545,22 +446,14 @@ function reordenarPelis(id) {
     newPelis.unshift(pelis[pelis.findIndex((element) => element.id === id)]);
     return newPelis;
 }
-/**
- * 
- * @abstract esta funcion es la que maneja toda la interacción con el usuario, desde la compra de entradas hasta el armado del carrito. Se la invoca desde la función mostrarTodo, una vez que se arma el esqueleto de la sección de venta de entradas
- * 
- */
+
 function armarDOM(id = "") {
 
     const DOMbotonCerrar = document.querySelector(".cerrar");
     DOMbotonCerrar.addEventListener("click", () => {
         sweetCerrar()
-        //sessionStorage.getItem("compra") && sessionStorage.removeItem("compra");
-        //borrarTodo();
     });
 
-    //1) armar selector de películas. 
-    //Si vengo de la cartelera (id distinto de ""), ya está definido el id de la película y dibujo el selector de funciones sin esperar la interacción del usuario.
     const DOMselectorPeliculas = document.querySelector("#select__pelicula");
     DOMselectorPeliculas.appendChild(dibujarSelectorPeliculas(id));
     if (id != "") {
@@ -575,12 +468,9 @@ function armarDOM(id = "") {
 
     const DOMinputCantidad = document.querySelector(".entradas__cantidad");
 
-
-    //2) le doy un evnt listener al selector de funciones, que hace que se muestre el input de cantidad de entradas
     const DOMselectorFunciones = document.querySelector("#select__funcion");
     DOMselectorFunciones.addEventListener("change", () => DOMinputCantidad.style["display"] = "block");
 
-    //3)  genero el eventlistener para el form que contiene los selectores y el input de cantidad
     const formularioSelector = document.querySelector("#selectores");
     formularioSelector.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -594,21 +484,13 @@ function armarDOM(id = "") {
     });
 
 }
-/**
- * 
- * @abstract para reiniciar el proceso de selección de películas. Se la llama con el botón modificar una vez que se seleccionó la película, o con la cruz de cerrar al comienzo de la sección de compra de entradas.
- * 
- */
+
 function borrarTodo() {
     divEntradas = document.querySelector("#section__entradas");
     divEntradas.innerHTML = "";
     divEntradas.style['display']="none";
 }
-/**
- * 
- * @abstract usamos un sweetalert para alertar a la gente que está en un proceso de compra
- * 
- */
+
 function sweet(id = undefined) {
     if (sessionStorage.getItem("compra")) {
         Swal.fire({
@@ -643,10 +525,7 @@ function sweet(id = undefined) {
         document.querySelector("#section__entradas").style["display"]="block";
     }
 }
-/**
- * 
- * @abstract funcion para generar sweet alert cuando se hace click en boton cerrar (cruz a la derecha de div de entradas)
- */
+
 function sweetCerrar() {
     if (sessionStorage.getItem("compra")) {
         Swal.fire({
@@ -690,7 +569,7 @@ Swal.fire({
     clearInterval(timerInterval);
   }
 }).then((result) => {
-  /* Read more about handling dismissals below */
+ 
   if (result.dismiss === Swal.DismissReason.timer) {
     Swal.fire({
         title:"The end",
@@ -702,7 +581,7 @@ Swal.fire({
             confirmButton: 'boton-final'
         }
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+        
         if (result.isConfirmed) {
             sessionStorage.getItem("compra") && sessionStorage.removeItem("compra");
             borrarTodo();
@@ -723,10 +602,6 @@ Swal.fire({
 
 }
 
-/**
- * 
- * @abstract genera la galería con los snacks 
- */
 function mostrarSnacks() {
     document.querySelector("#botones").remove();
     document.querySelector("#advertencia").remove();
@@ -753,10 +628,7 @@ const BOTON_PAGAR = (donde) => {
     DONDE.append(BOTON_PAGAR_INICIAL);  
     BOTON_PAGAR_INICIAL.addEventListener("click",()=> sweetPagar());
 }
-/**
- * 
- * @param {String} id id del snack seleccionado con el botón correspondiente. Snack resumido genera un objeto con menos propiedades que el objeto completo y lo carga en el carrito (que ya tiene cargado el objeto de entradas)
- */
+
 function generarCarritoSnacks(id) {
     const SNACKELEGIDO = snacks.find((element) => element.id === id);
     let snackResumido = (({ id, nombre, precio }) => ({ id, nombre, precio }))(SNACKELEGIDO);
@@ -789,8 +661,6 @@ function extraerRepetidos() {
     const aDevolver = [carritoSinDuplicados, totalAPagarSnacks];
     return aDevolver;
 }
-
-
 
 function dibujarBotones() {
     const FRAGMENTO = new DocumentFragment();
@@ -841,12 +711,7 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran a la derecha.</p></div>
                 </div>`;
 }
-/**
- * 
- * @abstract separa los números de fila y asiento del string del id del asiento elegido 
- * @param {string} id el id del asiento elegido
- * @returns un string 'legible' de la ubicación del asiento
- */
+
 const coordenadas = (id) => {
     let guion = id.indexOf("-");
     let nrofila = parseInt(id.slice(1, guion));
@@ -857,7 +722,6 @@ const coordenadas = (id) => {
     return coordenadas_asientos;
 }
 
-// //////// VARIABLES /////////  //
 let asientos = [];
 let salas = [];
 let pelis = [];
@@ -869,158 +733,4 @@ let carritoEntradas = {};
 let totalApagarEntradas;
 
 
-// //////// OBJETOS ///////////  //
-//*********** Salas */
-class Sala {
-    constructor(nombre, filas, columnas, descripcion) {
-        this.nombre = nombre;
-        this.filas = filas;
-        this.columnas = columnas;
-        this.capacidad = filas * columnas;
-        this.descripcion = descripcion;
-    }
-}
 
-salas[0] = new Sala("Premium", 15, 10, "Nuestra sala VIP, cuenta con butacas reclinables con botones eléctricos para que cada expectador elija su posición ideal y así disfrute de su película preferida como si estuviera en primera clase de un viaje en avión. Además, menos cantidad de butacas y más espacio entre las mismas otorgan mayor privacidad, y cada butaca cuenta con bandeja para los snacks. NO está permitido el ingreso de menores de 12 años.");
-salas[1] = new Sala("Clásica", 25, 10, "Sin escatimar en confort, esta sala tiene mayor capacidad que la Premium, butacas ultra cómodas con espacio posavasos. Está pensada para los usuarios que no quieren gastar tanto como en la sala Premium pero quieren asegurarse de pasar un momento de tranquilidad, sin interrupciones. Ofrecemos tanto películas ATP como las no aptas para menores de 18.");
-salas[2] = new Sala("Infantil", 25, 15, "La sala más económica, con butacas confortables pero clásicas, en ella proyectamos mayormente películas para el público infantil. Si sos de aquellas personas que no quieren interrupciones, te aconsejamos las salas Clásica o Premium. Las butacas poseen espacio posavasos, pero están más juntas unas de otras.");
-
-//*********** Películas */
-class Pelicula {
-    constructor(id, nombre, imdbID, anio, actor, genero, edad, director, resumen, duracion, rating) {
-        this.id = id;
-        this.nombre = nombre;
-        this.imdbID=imdbID;
-        this.anio = anio;
-        this.actor = actor;
-        this.genero = genero;
-        this.edad = edad;
-        this.director = director;
-        this.resumen = resumen;
-        this.duracion = duracion;
-        this.rating = rating;
-    }
-}
-
-pelis = [
-    new Pelicula("2309101900_IND", "Indiana Jones y el templo de la perdición","tt0087469", 1984, "Harrison Ford", "Aventuras", "ATP", "Steven Spielberg", "En 1935, Indiana Jones llega a la India, todavía parte del Imperio británico, y se le pide que encuentre una piedra mística. Entonces se topa con un culto secreto que comete esclavitud y sacrificios humanos en las catacumbas de un palacio.", "1h 58m", 7.5),
-    new Pelicula("2309101901_TOY", "Toy Story", "tt0114709", 1995, "Tom Hank", "Animación", "ATP", "John Lasseter", "Un vaquero de juguete se encuentra celoso y amenazado cuando un nuevo juguete, un guardián espacial, se convierte en el favorito del niño al que pertenecen.", "1h 21m", 8.3),
-    new Pelicula("2309101904_VOL", "Volver al futuro", "tt0088763", 1985, "Michael J Fox", "Ciencia ficción, aventuras", "ATP", "Robert Zemeckis", "Marty McFly, un estudiante de secundaria de 17 años, es enviado accidentalmente treinta años al pasado en un DeLorean que viaja en el tiempo, inventado por su gran amigo, el excéntrico científico Doc Brown.", "1h 56m", 8.5),
-    new Pelicula("2309052000_TIT", "Titanic", "tt0120338", 1997, "Leonardo Di Caprio, Kate Winslett", "Romance, Drama", "PG-13", "James Cameron", "Una aristócrata de diecisiete años se enamora de un amable pero pobre artista a bordo del lujoso y desafortunado R.M.S. Titanic.", "3h 14m", 7.9),
-    new Pelicula("2309040102_AFR", "Africa mía", "tt", 1985, "Robert Redford, Maryl Streep", "Romance, Drama, Biografía", "GP-13", "Sydney Pollack", "En la Kenia colonial del siglo XX, una baronesa danesa, propietaria de una plantación, mantiene una apasionada relación amorosa con un cazador de espíritu libre.", "2h 41m", 7.1),
-    new Pelicula("2310020824_KAR", "Karate Kid", "tt0087538", 1984, "Ralph Macchio, Pat Morita", "Acción, Drama, Familiar", "ATP", "John G. Avildsen", "Un maestro de artes marciales acepta instruir a un adolescente acosado.", "2h 6m", 7.5)
-]
-//id de africa mia tt0089755
-//*********** Snacks */
-class Snack {
-    constructor(id, nombre, descripcion, calorias, precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.calorias = calorias;
-        this.precio = precio;
-    }
-}
-
-snacks = [
-    new Snack("sn_001", "Pochoclo 'entre dos'", "Balde de pochoclos para compartir, y dos vasos de gaseosa a elección.", "1500", 2000),
-    new Snack("sn_002", "Popcorn Vintage", "Cartón de nuestro exquisito pochoclo Vintage. Puede ser dulce o salado. Simple o bañado en manteca derretida.", "1000", 1200),
-    new Snack("sn_003", "Chipá anaranjado", "Bandeja de chipá (pan de queso) para compartir. Trae 10 unidades. Acompañado de 2 vasos de jugo de naranja recién exprimido.", "1800", 2500),
-    new Snack("sn_004", "Pancho a la Vintage", "Salchicha de primera calidad en panes esponjosos, con mostaza y ketchup, acompañado de gaseosa a elección.", "2500", 800),
-    new Snack("sn_005", "Cereales con naranja", "Dos barras de cereal con chips de chocolate y un vaso de jugo de naranja recién exprimido.", "1500", 800),
-    new Snack("sn_006", "Ignacio's Cheddar", "Bandeja de nachos con mucho cheddar para untar. Acompañada de un vaso de gaseosa a elección.", "2200", 3000),
-    new Snack("sn_007", "Frutas saludables", "Ensalada de fruta recién hecha, con todas las frutas que te imaginás, y más.", "2200", 500)
-]
-
-//*********** Funciones (día y hora en la que se proyecta un película) */
-class Funcion {
-    constructor(pelicula, sala, dia, mes, anio, hora) {
-        this.id = "f_" + anio + (mes + 1) + hora + "_" + sala;
-        this.pelicula = pelicula;
-        this.sala = sala;
-        this.dia = dia;
-        this.mes = mes;
-        this.anio = anio;
-        this.hora = hora;
-        this.asientosFuncion = inicializarAsientos(sala);
-        this.precio = calcularPrecio(sala, dia, mes, anio);
-    }
-}
-
-funciones = [
-    new Funcion("2309101900_IND", 1, 24, 9, 2023, 1900),
-    new Funcion("2309101900_IND", 1, 24, 9, 2023, 2200),
-    new Funcion("2309052000_TIT", 0, 28, 9, 2023, 1315),
-    new Funcion("2309101900_IND", 1, 25, 9, 2023, 1900),
-    new Funcion("2309101900_IND", 1, 25, 9, 2023, 2200),
-    new Funcion("2309101900_IND", 1, 26, 9, 2023, 2200),
-    new Funcion("2309101900_IND", 1, 27, 9, 2023, 1500),
-    new Funcion("2309101900_IND", 1, 27, 9, 2023, 1800),
-    new Funcion("2309052000_TIT", 0, 28, 9, 2023, 1615),
-    new Funcion("2309052000_TIT", 0, 5, 10, 2023, 1315),
-    new Funcion("2309052000_TIT", 0, 6, 10, 2023, 1315),
-    new Funcion("2309101904_VOL", 0, 21, 9, 2023, 1315),
-    new Funcion("2309101904_VOL", 0, 21, 9, 2023, 1620),
-    new Funcion("2309101904_VOL", 0, 21, 9, 2023, 1830),
-    new Funcion("2309040102_AFR", 0, 23, 9, 2023, 1830),
-    new Funcion("2309101901_TOY", 2, 23, 9, 2023, 1830),
-    new Funcion("2310020824_KAR", 2, 2, 11, 2023,1530)
-];
-
-
-
-// **** **** **** FIN DECLARACIONES **** **** **** /////////////////////
-
-// ************* Armado del DOM inicial  ****************************************//
-(sessionStorage.getItem("compra")) && sessionStorage.removeItem("compra");
-const botonEntradas = document.querySelectorAll(".comprar_entradas");
-botonEntradas.forEach((element) => element.addEventListener("click", () => {
-    sweet();
-    //if (verificarFlag()) {
-    //    mostrarTodo();
-    //    armarDOM();
-    //}
-}
-));
-/** 
- * 
-* @abstract armamos la parte de la cartelera con los posters y el overlay
- * 
-*/
-pelis.forEach((elemento) => {
-    const peliculaEnCartelera = document.createElement("div");
-    peliculaEnCartelera.className = "cartelera__div--imagen";
-    const poster = document.createElement("img");
-    poster.src = `assets/imagenes/peliculas/${elemento.id}.jpg`;
-    poster.className = "cartelera__img";
-    peliculaEnCartelera.append(poster);
-    const overlay = document.createElement("div");
-    overlay.className = "cartelera__div--overlay";
-    const texto = document.createElement("div");
-    texto.className = "cartelera__datospeli";
-    texto.append(armarDatosPeli(elemento, texto));
-    overlay.append(texto);
-    const botonCartelera = document.createElement("div");
-    botonCartelera.className = "cartelera__boton";
-    botonCartelera.id = elemento.id;
-    botonCartelera.innerText = "elegir";
-    botonCartelera.style.cursor = "pointer";
-    const botonFetch = document.createElement("div");
-    botonFetch.className = "cartelera__boton";
-    botonFetch.id = elemento.imdbID;
-    botonFetch.innerText = "ver más";
-    botonFetch.style.cursor = "pointer";
-    overlay.append(botonFetch);
-    overlay.append(botonCartelera);
-    peliculaEnCartelera.append(overlay);
-    document.querySelector(".cartelera__contenedor").appendChild(peliculaEnCartelera);
-    botonCartelera.addEventListener("click", (event) => sweet(event.target.id));
-    botonFetch.addEventListener("click", (event) => apitmdb(event.target.id)); 
-});
-/** 
- * 
- * @abstract Armamos el carousel de snacks en la parte estática de la página
- * 
-*/
-const sectionSnacks = document.querySelector(".snacks");
-snacks.forEach((element) => sectionSnacks.appendChild(dibujarSnacks(element)));
