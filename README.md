@@ -28,11 +28,17 @@ Una vez que se hace click en el botón de compra de entradas y se muestra el ove
 ### Datos extra sobre las películas
 Desde la cartelera también se puede ver información detallada de cada película haciendo click en el botón **ver más**.
 En este caso también se abre un overlay, esta vez con los datos de la película obtenidos desde la API de The Movie Database.
+## Info 'técnica' del proyecto
+* El Storage se hizo en Session storage porque la venta de entradas y elección de asientos tiene un tiempo límite ya que hay que liberarlos para otros potenciales clientes. Los asientos elegidos tienen una 'vida útil' muy corta y no tiene sentido almacenarlos en local storage. (algunos sitios web tienen un contador para que el usuario sepa que no puede demorarse en la compra)
+* La platea se hizo con checkboxes que representan los asientos. La ocupación que se ve en el simulador está generada aleatoriamente con la función random que devuelve 1 o 0 para cada asiento. Los asientos con 1 están ocupados (y las correspondientes checkboxes están en estado disabled) y los 0 libres. Para cambiar el estado de los asientos (libres, ocupados o elegidos) se usan clases (libre o elegido) y estados de los checkboxes (checked, unchecked e indeterminado)
+* Al cargar la página, las secciones Cartelera y Snacks se 'dibujan' desde Javascript. Las salas ya están cargadas en el html.
+* **IMPORTANTE** La película de cartelera Africa Mía tiene un id erróneo, de manera que cuando se busca la info en la API salta un error, que es 'atrapado' con el catch y la función errorHandler.
 ## Mejoras pendientes
 * Hacer que la página sea responsive
-* Estilizar la muestra de datos de la api
-* Mejorar algunos detalles de ubicación de secciones (márgenes)
+* Finalizar la sección de contactos
+* Mejorar detalles de estilos como márgenes, tamaños y colores
 * Agregar animaciones para abrir y cerrar pantallas o carteles
+* Corregir flechas en carousel, que se hagan transparentes cuando el carousel llega al final
 * Generar un PDF con QR al final de la compra
 
 ## NOTA sobre esta versión del proyecto
