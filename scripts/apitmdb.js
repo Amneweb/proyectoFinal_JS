@@ -95,16 +95,6 @@ function mostrarPerfil(persona) {
   });
 }
 
-function buscarInfoDirectores(crew) {
-  crew.forEach((persona) => {
-    const apiURL = 'https://api.themoviedb.org/3/person/' + persona.id + '?language=es-ES';
-    fetch(apiURL, options)
-      .then(response => response.json())
-      .then(response => mostrarPerfil(response))
-      .catch(err => errorHandler(err, "buscarInfoDirectores"));
-  });
-}
-
 function dibujarDatosApi(resultado) {
   const URLposter = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
   let datos_movie = `
@@ -143,11 +133,11 @@ function dibujarCast(resultado, director) {
   const section__director = document.querySelector("#directores");
   section__director.innerText = director.name;
   const section__actores = document.querySelector("#actores");
-  let creditos = "<h2>Actores</h2><div class='contenedor_tarjetas'>";
-  const URLactor = "https://www.themoviedb.org/t/p/w276_and_h350_face/";
+  let creditos = "<h2>Actores</h2><p>[Se muestran sólo los primeros diez]</p><div class='contenedor_tarjetas'>";
   resultado.forEach((elemento) => {
+    const URLactor = elemento.profile_path ? `https://www.themoviedb.org/t/p/w276_and_h350_face/`+elemento.profile_path:`assets/imagenes/fotoNN.jpg`;
     creditos += `<div class='card_actor'> 
-    <img src="${URLactor}${elemento.profile_path}" />
+    <img src="${URLactor}" />
     <h4>${elemento.name}</h4>
     <p>${elemento.character}</p>
     <button class='boton-ver-mas' id='actor_${elemento.id}'>Más info <i class="fa-solid fa-circle-info"></i></button>

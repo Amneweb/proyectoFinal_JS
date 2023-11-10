@@ -835,7 +835,7 @@
 margin:auto;
     padding:30px;
     p { color:#eeeeee;
-        .mensaje {
+        &.mensaje {
         font-size:0.8em;
     }
 }
