@@ -1,9 +1,7 @@
-
 (sessionStorage.getItem("compra")) && sessionStorage.removeItem("compra");
 const botonEntradas = document.querySelectorAll(".comprar_entradas");
 botonEntradas.forEach((element) => element.addEventListener("click", () => {
     sweet();
-  
 }
 ));
 
@@ -20,7 +18,7 @@ pelis.forEach((elemento) => {
     texto.className = "cartelera__datospeli";
     texto.append(armarDatosPeli(elemento, texto));
     overlay.append(texto);
-    const contenedorBotones =document.createElement("div");
+    const contenedorBotones = document.createElement("div");
     contenedorBotones.classList.add("contenedorBotones");
     const botonCartelera = document.createElement("div");
     botonCartelera.className = "cartelera__boton";
@@ -35,16 +33,16 @@ pelis.forEach((elemento) => {
     contenedorBotones.append(botonFetch);
     contenedorBotones.append(botonCartelera);
     overlay.append(contenedorBotones);
-    const tmdb=document.createElement("div");
+    const tmdb = document.createElement("div");
     tmdb.classList.add("tmdb");
-    const tmdbP=document.createElement("p");
-    tmdbP.innerText="(*) Powered by THE MOVIE DATABASE";
+    const tmdbP = document.createElement("p");
+    tmdbP.innerText = "(*) Powered by THE MOVIE DATABASE";
     tmdb.append(tmdbP);
     overlay.append(tmdb);
     peliculaEnCartelera.append(overlay);
     document.querySelector(".cartelera__contenedor").appendChild(peliculaEnCartelera);
     botonCartelera.addEventListener("click", (event) => sweet(event.target.id));
-    botonFetch.addEventListener("click", (event) => apitmdb(event.target.id)); 
+    botonFetch.addEventListener("click", (event) => apitmdb(event.target.id));
 });
 
 const sectionSnacks = document.querySelector(".snacks");

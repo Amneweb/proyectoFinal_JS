@@ -106,7 +106,7 @@ function armarDatosPeli(PELIELEGIDA) {
         PELIELEGIDA.genero,
         PELIELEGIDA.edad,
         PELIELEGIDA.rating,
-        acortarPalabra(PELIELEGIDA.resumen,120)
+        acortarPalabra(PELIELEGIDA.resumen, 120)
     ]
     TITULOS.forEach((titulo, llave) => {
         const itemTitulo = document.createElement('div');
@@ -188,7 +188,6 @@ function dibujarSelectorPeliculas(id = "") {
     } else {
         pelisReordenadas = reordenarPelis(id);
     };
-
     pelisReordenadas.forEach((elemento) => {
         const optionPelicula = document.createElement("option");
         optionPelicula.value = elemento.id;
@@ -290,12 +289,11 @@ function seleccionDeAsientos(event, entradasRequeridas) {
         //código de lo que pasa si hago click en asiento indeterminado
         event.target.checked = false;
         Swal.fire({
-            html: '<h3>atención</h3><p>Ya tenés '+entradasRequeridas+ ' asientos seleccionados. Para cambiarlos debés liberar uno de los que ya elegiste</p>',
+            html: '<h3>atención</h3><p>Ya tenés ' + entradasRequeridas + ' asientos seleccionados. Para cambiarlos debés liberar uno de los que ya elegiste</p>',
             icon: 'warning',
             iconColor: '#cc2d2c',
-            confirmButtonColor:'#cc2d2c'
+            confirmButtonColor: '#cc2d2c'
         })
-  
     } else {
         if (!event.target.classList.contains("elegido")) {
             //código de lo que pasa si hago click en asiento libre
@@ -311,8 +309,8 @@ function seleccionDeAsientos(event, entradasRequeridas) {
                 document.querySelector("#totalEntradas") && document.querySelector("#totalEntradas").remove();
                 const totalEnEntradas = document.createElement("div");
                 totalEnEntradas.classList.add("totales");
-                totalEnEntradas.id="totalEntradas";
-                totalEnEntradas.innerHTML = `<p>Total entradas: ${currency(totalApagarEntradas)}</p>`; 
+                totalEnEntradas.id = "totalEntradas";
+                totalEnEntradas.innerHTML = `<p>Total entradas: ${currency(totalApagarEntradas)}</p>`;
                 const ENTRADAS_RESUMEN = document.querySelector(".entradas__resumen");
                 ENTRADAS_RESUMEN.appendChild(totalEnEntradas);
                 ENTRADAS_RESUMEN.appendChild(dibujarBotones());
@@ -333,7 +331,6 @@ function seleccionDeAsientos(event, entradasRequeridas) {
             });
         }
     }
-
 }
 
 function armarCarritoEntradas(FUNCIONELEGIDA, entradasRequeridas) {
@@ -348,84 +345,76 @@ function armarCarritoEntradas(FUNCIONELEGIDA, entradasRequeridas) {
     carrito.push(carritoEntradas);
     cargarStorage();
 }
+
 function cargarAsientos(asientos) {
     carrito[0].lugares = asientos;
     sessionStorage.removeItem("compra");
     cargarStorage();
 }
 
-
 function cargarStorage() {
     sessionStorage.setItem('compra', JSON.stringify(carrito));
 }
+
 function recuperarStorage() {
     const carritoSS = JSON.parse(sessionStorage.getItem('compra'));
     return carritoSS;
-
 }
+
 function dibujarSnacksElegidos() {
     document.querySelector("#boton_pagar").remove();
     const carritoEnStorage = recuperarStorage();
     let totalGeneral;
     const listadoSnacks = document.querySelector(".entradas__izquierda");
     if (carritoEnStorage.length > 1) {
-    
-    
-    if (!document.querySelector("#titulo-snacks")) {
-        const tituloSnacks = document.createElement("h3");
-        tituloSnacks.id = "titulo-snacks";
-        tituloSnacks.innerHTML = "Snacks seleccionados";
-        listadoSnacks.append(tituloSnacks);
-    }
-    document.querySelectorAll(".lista-snacks") && document.querySelectorAll(".lista-snacks").forEach((element) => element.remove());
-    document.querySelector("#a-pagar") && document.querySelector("#a-pagar").remove();
-    resultados = extraerRepetidos(); 
-
-    resultados[0].forEach((elemento) => {
-        const snacksDIV = document.createElement("div");
-        snacksDIV.classList.add("lista-snacks");
-        snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p><button class="basura" id="borrar-${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
-        listadoSnacks.appendChild(snacksDIV);
-        document.querySelector(`#borrar-${elemento[0].id}`).addEventListener("click", (event) => {
-            borrarCarritoSnacks(event.target.id);
+        if (!document.querySelector("#titulo-snacks")) {
+            const tituloSnacks = document.createElement("h3");
+            tituloSnacks.id = "titulo-snacks";
+            tituloSnacks.innerHTML = "Snacks seleccionados";
+            listadoSnacks.append(tituloSnacks);
+        }
+        document.querySelectorAll(".lista-snacks") && document.querySelectorAll(".lista-snacks").forEach((element) => element.remove());
+        document.querySelector("#a-pagar") && document.querySelector("#a-pagar").remove();
+        resultados = extraerRepetidos();
+        resultados[0].forEach((elemento) => {
+            const snacksDIV = document.createElement("div");
+            snacksDIV.classList.add("lista-snacks");
+            snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p><button class="basura" id="borrar-${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
+            listadoSnacks.appendChild(snacksDIV);
+            document.querySelector(`#borrar-${elemento[0].id}`).addEventListener("click", (event) => {
+                borrarCarritoSnacks(event.target.id);
+            });
         });
-    });
-    const snacksTotales = document.createElement("div");
-    snacksTotales.id = "a-pagar";
-    snacksTotales.classList.add("totales");
-    totalFormateado = currency(resultados[1]);
-    snacksTotales.innerHTML = `<p>Total snacks: ${totalFormateado}</p>`;
-    listadoSnacks.appendChild(snacksTotales);
-    totalGeneral = currency(resultados[1]+totalApagarEntradas);
-} else {
-    document.querySelector(".lista-snacks").innerHTML=`<p>No hay snacks seleccionados</p>`;
-    document.querySelector("#titulo-snacks").remove();
-    document.querySelector("#a-pagar") && document.querySelector("#a-pagar").remove();
-    totalGeneral = currency(totalApagarEntradas);
-}
+        const snacksTotales = document.createElement("div");
+        snacksTotales.id = "a-pagar";
+        snacksTotales.classList.add("totales");
+        totalFormateado = currency(resultados[1]);
+        snacksTotales.innerHTML = `<p>Total snacks: ${totalFormateado}</p>`;
+        listadoSnacks.appendChild(snacksTotales);
+        totalGeneral = currency(resultados[1] + totalApagarEntradas);
+    } else {
+        document.querySelector(".lista-snacks").innerHTML = `<p>No hay snacks seleccionados</p>`;
+        document.querySelector("#titulo-snacks").remove();
+        document.querySelector("#a-pagar") && document.querySelector("#a-pagar").remove();
+        totalGeneral = currency(totalApagarEntradas);
+    }
     document.querySelector("#total-gral") && document.querySelector("#total-gral").remove();
-    const DOMtotalGeneral=document.createElement("div");
-    DOMtotalGeneral.id="total-gral";
-    
-    DOMtotalGeneral.innerHTML=`<p>Total general: ${totalGeneral}</p>`;
+    const DOMtotalGeneral = document.createElement("div");
+    DOMtotalGeneral.id = "total-gral";
+    DOMtotalGeneral.innerHTML = `<p>Total general: ${totalGeneral}</p>`;
     listadoSnacks.append(DOMtotalGeneral);
     BOTON_PAGAR(".entradas__izquierda");
-
-
 }
 
 function enviarFormularioSelector(inputs) {
-    //borra los datos de la pelicula
     const DOMdatospeli = document.querySelector(".entradas__datospeli");
     const DOMimagenPeli = document.querySelector(".entradas__imagen");
     DOMdatospeli.style["display"] = "none";
     DOMimagenPeli.style["display"] = "none";
-    //genera variables en función a valores de los selects
     const FUNCIONELEGIDA = funciones.find((element) => element.id === inputs[1].value);
     const asientosFuncionElegida = simularOcupacion(FUNCIONELEGIDA);
     const totalLibres = cerosEnMatriz(asientosFuncionElegida);
     const entradasRequeridas = parseInt(inputs[2].value);
-    //dibuja la platea y el resumen de lo solicitado
     if (entradasRequeridas <= totalLibres) {
         document.querySelector("#selectores").innerHTML = "";
         const ENTRADAS_RESUMEN = document.querySelector(".entradas__resumen");
@@ -441,6 +430,7 @@ function enviarFormularioSelector(inputs) {
         sweetCantidad("mayor");
     }
 }
+
 function reordenarPelis(id) {
     let newPelis = pelis.filter((element) => element.id != id);
     newPelis.unshift(pelis[pelis.findIndex((element) => element.id === id)]);
@@ -448,12 +438,10 @@ function reordenarPelis(id) {
 }
 
 function armarDOM(id = "") {
-
     const DOMbotonCerrar = document.querySelector(".cerrar");
     DOMbotonCerrar.addEventListener("click", () => {
         sweetCerrar()
     });
-
     const DOMselectorPeliculas = document.querySelector("#select__pelicula");
     DOMselectorPeliculas.appendChild(dibujarSelectorPeliculas(id));
     if (id != "") {
@@ -464,32 +452,25 @@ function armarDOM(id = "") {
         dibujarSelectorFunciones(event.target.value);
         dibujarDatosPeli(event.target.value);
     });
-
-
     const DOMinputCantidad = document.querySelector(".entradas__cantidad");
-
     const DOMselectorFunciones = document.querySelector("#select__funcion");
     DOMselectorFunciones.addEventListener("change", () => DOMinputCantidad.style["display"] = "block");
-
     const formularioSelector = document.querySelector("#selectores");
     formularioSelector.addEventListener("submit", (event) => {
         event.preventDefault();
         const inputs = event.target.elements;
-        console.log("parse int de negativo "+parseInt(inputs[2].value));
-        if (isNaN(inputs[2].value) || inputs[2].value < 1 ) {
+        if (isNaN(inputs[2].value) || inputs[2].value < 1) {
             sweetCantidad();
         } else {
             enviarFormularioSelector(inputs);
         }
-  
     });
-
 }
 
 function borrarTodo() {
     divEntradas = document.querySelector("#section__entradas");
     divEntradas.innerHTML = "";
-    divEntradas.style['display']="none";
+    divEntradas.style['display'] = "none";
 }
 
 function sweet(id = undefined) {
@@ -512,14 +493,13 @@ function sweet(id = undefined) {
                 sessionStorage.removeItem("compra");
                 mostrarTodo(id);
                 armarDOM(id);
-                document.querySelector("#section__entradas").style["display"]="block";
-        
-            } //aca estaba else result.isdenied
+                document.querySelector("#section__entradas").style["display"] = "block";
+            } 
         })
     } else {
         mostrarTodo(id);
         armarDOM(id);
-        document.querySelector("#section__entradas").style["display"]="block";
+        document.querySelector("#section__entradas").style["display"] = "block";
     }
 }
 
@@ -540,73 +520,67 @@ function sweetCerrar() {
             cancelButtonAriaLabel: 'Pulgar abajo'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log("is confirmed");
                 sessionStorage.removeItem("compra");
                 borrarTodo();
-        
-            } else {
-                console.log("is denied");
-            }
+            } 
         })
     } else {
         borrarTodo();
     }
 }
+
 function sweetPagar() {
     let timerInterval;
-Swal.fire({
-  html: "<h1>🛸</h1><p>En <b></b> milisegundos te estaremos dirigiendo a la pasarela de pagos...</p>",
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading();
-    const timer = Swal.getPopup().querySelector("b");
-    timerInterval = setInterval(()=>{
-        timer.textContent = `${Swal.getTimerLeft()}`;
-    }, 100);
-  },
-  willClose: () => {
-    clearInterval(timerInterval);
-  }
-}).then((result) => {
- 
-  if (result.dismiss === Swal.DismissReason.timer) {
     Swal.fire({
-        title:"The end",
-        html: "<p>Hasta acá llegó el simulador de mi proyecto para el curso de JavaScript de Coderhouse. Gracias por recorrerlo hasta el final.</p><p>Si te gustó mi trabajo y te gustaría contratarme, contactame a través de cualquiera de mis canales.</p><div class='canales'><a href='https://www.linkedin.com/in/amneriscalle/'><i class='fa-brands fa-linkedin'></i></a><a href='https://www.instagram.com/amne.calle/'><i class='fa-brands fa-instagram'></i></a><a href='mailto:amneris.calle@gmail.com'><i class='fa-regular fa-envelope'></i></a></div>",
-        confirmButtonText: "Hasta la próxima 👋",
-        customClass: {
-            htmlContainer:'final',
-            title:'title-final',
-            confirmButton: 'boton-final'
+        html: "<h1>🛸</h1><p>En <b></b> milisegundos te estaremos dirigiendo a la pasarela de pagos...</p>",
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+                timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
         }
-      }).then((result) => {
-        
-        if (result.isConfirmed) {
-            sessionStorage.getItem("compra") && sessionStorage.removeItem("compra");
-            borrarTodo();
+    }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+            Swal.fire({
+                title: "The end",
+                html: "<p>Hasta acá llegó el simulador de mi proyecto para el curso de JavaScript de Coderhouse. Gracias por recorrerlo hasta el final.</p><p>Si te gustó mi trabajo y te gustaría contratarme, contactame a través de cualquiera de mis canales.</p><div class='canales'><a href='https://www.linkedin.com/in/amneriscalle/'><i class='fa-brands fa-linkedin'></i></a><a href='https://www.instagram.com/amne.calle/'><i class='fa-brands fa-instagram'></i></a><a href='mailto:amneris.calle@gmail.com'><i class='fa-regular fa-envelope'></i></a></div>",
+                confirmButtonText: "Hasta la próxima 👋",
+                customClass: {
+                    htmlContainer: 'final',
+                    title: 'title-final',
+                    confirmButton: 'boton-final'
+                }
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    sessionStorage.getItem("compra") && sessionStorage.removeItem("compra");
+                    borrarTodo();
+                }
+            });
         }
-      });
-  }
-});
+    });
 }
 
 const sweetCantidad = (condicion) => {
-texto = condicion==="mayor"? "<p>Lo sentimos, la sala no cuenta con la cantidad de entradas libres solicitada.</p><p> Ingresá una cantidad menor o, si querés organizar un evento empresarial a sala completa, escribinos a info@vintage.com</p>":"<p>🤔 ¿No te habrás olvidado de ingresar la cantidad de entradas? ¿O habrás ingresado un número menor que 1? Para seguir adelante deberás ingresar una cantidad igual o mayor a 1.</p>"
- 
-Swal.fire({
-    icon:'error',
-  title: "Ups...",
- html: texto,
-});
-
+    texto = condicion === "mayor" ? "<p>Lo sentimos, la sala no cuenta con la cantidad de entradas libres solicitada.</p><p> Ingresá una cantidad menor o, si querés organizar un evento empresarial a sala completa, escribinos a info@vintage.com</p>" : "<p>🤔 ¿No te habrás olvidado de ingresar la cantidad de entradas? ¿O habrás ingresado un número menor que 1? Para seguir adelante deberás ingresar una cantidad igual o mayor a 1.</p>"
+    Swal.fire({
+        icon: 'error',
+        title: "Ups...",
+        html: texto,
+    });
 }
 
 function mostrarSnacks() {
     document.querySelector("#botones").remove();
     document.querySelector("#advertencia").remove();
     document.querySelector("#platea").style["display"] = "none";
-           BOTON_PAGAR(".entradas__resumen");   
+    BOTON_PAGAR(".entradas__resumen");
     document.querySelector(".carrito").innerHTML = `
         <h3>¿querés agregar snacks?</h3>
         <p>Elegí el que quieras o completá la compra de entradas sin snacks haciendo click en el botón TERMINAR</p>
@@ -622,11 +596,11 @@ function mostrarSnacks() {
 
 const BOTON_PAGAR = (donde) => {
     const BOTON_PAGAR_INICIAL = document.createElement("div");
-    BOTON_PAGAR_INICIAL.id=("boton_pagar");
-    BOTON_PAGAR_INICIAL.innerHTML=`<button class="boton_pagar"><i class="fa-solid fa-money-check-dollar"></i>PAGAR Y FINALIZAR COMPRA</button>`;
+    BOTON_PAGAR_INICIAL.id = ("boton_pagar");
+    BOTON_PAGAR_INICIAL.innerHTML = `<button class="boton_pagar"><i class="fa-solid fa-money-check-dollar"></i>PAGAR Y FINALIZAR COMPRA</button>`;
     const DONDE = document.querySelector(donde);
-    DONDE.append(BOTON_PAGAR_INICIAL);  
-    BOTON_PAGAR_INICIAL.addEventListener("click",()=> sweetPagar());
+    DONDE.append(BOTON_PAGAR_INICIAL);
+    BOTON_PAGAR_INICIAL.addEventListener("click", () => sweetPagar());
 }
 
 function generarCarritoSnacks(id) {
@@ -635,11 +609,10 @@ function generarCarritoSnacks(id) {
     carrito.push(snackResumido);
     cargarStorage();
 }
+
 function borrarCarritoSnacks(id) {
     const nuevoID = id.slice(7);
-    console.log(carrito);
- carrito.splice(carrito.findIndex((elemento)=>elemento.id===nuevoID),1);
- console.log(carrito);
+    carrito.splice(carrito.findIndex((elemento) => elemento.id === nuevoID), 1);
     cargarStorage();
     dibujarSnacksElegidos();
 }
