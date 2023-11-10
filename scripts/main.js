@@ -286,7 +286,7 @@ function seleccionDeAsientos(event, entradasRequeridas) {
     idSeleccionado = event.target.id;
     DOMplatea = document.querySelector("#platea");
     if (event.target.classList.contains("indeterminado")) {
-        //código de lo que pasa si hago click en asiento indeterminado
+        
         event.target.checked = false;
         Swal.fire({
             html: '<h3>atención</h3><p>Ya tenés ' + entradasRequeridas + ' asientos seleccionados. Para cambiarlos debés liberar uno de los que ya elegiste</p>',
@@ -296,7 +296,7 @@ function seleccionDeAsientos(event, entradasRequeridas) {
         })
     } else {
         if (!event.target.classList.contains("elegido")) {
-            //código de lo que pasa si hago click en asiento libre
+           
             event.target.classList.replace("libre", "elegido");
             const Elegidos = DOMplatea.querySelectorAll('input[type="checkbox"]:checked');
             if (Elegidos.length === entradasRequeridas) {
@@ -316,7 +316,7 @@ function seleccionDeAsientos(event, entradasRequeridas) {
                 ENTRADAS_RESUMEN.appendChild(dibujarBotones());
             }
         } else {
-            //código de lo que pasa si hago click en asiento elegido
+            
             const Indeterminados = DOMplatea.querySelectorAll(".indeterminado");
             const MOSTRAR_ASIENTOS = document.querySelector(".asientos__elegidos");
             const divBotones = document.querySelector("#botones");
