@@ -16,10 +16,11 @@ boton_cerrar.addEventListener("click", () => {
 const loader = document.querySelector(".loader");
 const showError = document.querySelector("#showError");
 const datosPelicula = document.querySelector("#datosPelicula");
-const errorHandler = (error) => {
-  showError.innerHTML = "<p>Lo sentimos, hubo un error en la carga de datos.</p><p>Mensaje de error del sistema: '" + error + "'</p>";
+const errorHandler = (error,dedonde) => {
+  showError.innerHTML = "<p>Lo sentimos, hubo un error en la carga de datos.</p><p>Mensaje de error del sistema: '" + error + "'</p><p>En función "+dedonde+"</p>";
 };
 let resultado_pelicula = {};
+
 async function apitmdb(id) {
 
   section__api.style["display"] = "block";
@@ -36,17 +37,19 @@ const fetchapitmdb = async (apiURL) => {
   await fetch(apiURL, options)
     .then(async (response) => await response.json())
     .then(async (response) => {
-      resultado_pelicula = (({ id, title, original_title, overview, poster_path, popularity, release_date, vote_average, vote_count }) => ({ id, title, original_title, overview, poster_path, popularity, release_date, vote_average, vote_count }))(response.movie_results[0]);
+      resultado_pelicula = (({ id, title, original_title, overview, poster_path, popularity, release_date}) => ({ id, title, original_title, overview, poster_path, popularity, release_date }))(response.movie_results[0]);
+      
       dibujarDatosApi(resultado_pelicula);
       await buscarCreditosPeli(resultado_pelicula.id);
     })
     .catch((error) => {
-      errorHandler(error);
+      errorHandler(error,"fetchapitmdb");
     })
     .finally(loader.style['display'] = "none");
 }
 
 async function buscarCreditosPeli(id) {
+  console.log ("en creditos peli");
   loader.style['display'] = "block";
   const apiURL = 'https://api.themoviedb.org/3/movie/' + id + '/credits?language=es-ES';
   await fetch(apiURL, options)
@@ -63,14 +66,14 @@ async function buscarCreditosPeli(id) {
         i++;
       });
 
-
+console.log(cast_resumido);
       dibujarCast(cast_resumido, director);
 
 
 
 
     })
-    .catch(error => errorHandler(error))
+    .catch(error => errorHandler(error,"buscarCreditosPeli"))
     .finally(loader.style['display'] = "none");
 }
 
@@ -84,7 +87,7 @@ async function buscarInfoActores(id) {
       const perfil = (({ id, name, biography, birthday, homepage, popularity, place_of_birth, profile_path }) => ({ id, name, biography, birthday, homepage, popularity, place_of_birth, profile_path }))(response);
       mostrarPerfil(perfil);
     })
-    .catch((error) => errorHandler(error));
+    .catch((error) => errorHandler(error,"buscarInfoActores"));
 
 }
 function mostrarPerfil(persona) {
@@ -104,22 +107,44 @@ function buscarInfoDirectores(crew) {
     fetch(apiURL, options)
       .then(response => response.json())
       .then(response => mostrarPerfil(response))
-      .catch(err => errorHandler(err));
+      .catch(err => errorHandler(err,"buscarInfoDirectores"));
   });
 }
 
 
 function dibujarDatosApi(resultado) {
-  let datos_movie = "<div><h3>Datos de película</h3>";
-  Object.entries(resultado).forEach(([key, value]) => {
-    datos_movie += "<p>" + key + ": " + value + "</p>";
-  })
-  datos_movie += "</div>";
+  const URLposter='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
+  let datos_movie = `
+  <div class="section__titulo--api">
+    <h4><i class="fa-solid fa-film"></i> ${resultado.title} </h4>
+  </div>
+  <div class="datos_pelicula">
+  <div class="poster_pelicula"><img src="${URLposter}${resultado.poster_path}"/></div>
+  <div class="info_pelicula">
+  <div class="row_info_pelicula">
+  <div class="col1_info_pelicula"><h4>Título original</h4></div>
+  <div class="col2_info_pelicula"><p>${resultado.original_title}</p></div>
+  </div>
+  <div class="row_info_pelicula">
+  <div class="col1_info_pelicula"><h4>Fecha de estreno</h4></div>
+  <div class="col2_info_pelicula"><p>${resultado.release_date}</p></div>
+  </div>
+  <div class="row_info_pelicula">
+  <div class="col1_info_pelicula"><h4>Trama</h4></div>
+  <div class="col2_info_pelicula"><p>${resultado.overview}</p></div>
+  </div>
+  <div class="row_info_pelicula">
+  <div class="col1_info_pelicula"><h4>Popularidad</h4></div>
+  <div class="col2_info_pelicula"><p>${resultado.popularity}</p></div>
+  </div>`;
+  datos_movie += "</div></div>";
   datos_movie += "<div id='actores'></div><div id='directores'></div>";
   datosPelicula.innerHTML = datos_movie;
+  console.log("terminando el dom");
 
 }
 function dibujarCast(resultado, director) {
+  console.log("en dibujar cast");
   const section__actores = document.querySelector("#actores");
   let creditos = "<h2>Director</h2>";
   Object.entries(director).forEach(([key, value]) => {

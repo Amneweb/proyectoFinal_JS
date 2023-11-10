@@ -372,6 +372,24 @@ select::-ms-expand {
   font-size: 1.5em;
 }
 
+.section__titulo--api {
+  border-bottom: 10px dotted var(--smoky-black);
+}
+.section__titulo--api h4 {
+  font-size: 3em;
+}
+.section__titulo--api h4:after {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url(../../assets/imagenes/estrellaTextoVintage.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
 #datosPelicula {
   margin: 40px;
 }
@@ -918,6 +936,40 @@ select::-ms-expand {
   margin-bottom: 30px;
   margin-top: 10px;
   padding: 30px;
+}
+
+.datos_pelicula {
+  display: flex;
+  padding: 30px;
+  width: 100%;
+  column-gap: 4%;
+}
+
+.poster_pelicula {
+  width: 28%;
+}
+.poster_pelicula img {
+  max-width: 100%;
+}
+
+.info_pelicula {
+  width: 68%;
+}
+
+.row_info_pelicula {
+  width: 100%;
+  display: flex;
+  column-gap: 4%;
+  padding: 10px 0px 10px 0;
+}
+
+.col1_info_pelicula {
+  width: 28%;
+}
+
+.col2_info_pelicula {
+  width: 68%;
+  margin-right: 40px;
 }
 
 .platea {
