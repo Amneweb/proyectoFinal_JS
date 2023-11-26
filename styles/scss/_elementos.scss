@@ -254,6 +254,18 @@ input#boton__entradas {
   
     }
   }
+
+  .header__button--entradas {
+    padding: 1rem 1rem;
+    font-size: 1.1em;
+    
+
+    &:hover {
+      background-color: white;
+      color: var(--rojo-butaca);
+      animation: transicion-entradas 0.5s;
+    }
+  }
 }
 /* ------------ FIN  menu superior ---------- */
 

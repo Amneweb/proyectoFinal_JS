@@ -41,6 +41,11 @@ h1 {
   font-size: var(--size-h1);
   color: var(--smoky-black);
 }
+@media screen and (max-width: 1060px) {
+  h1 {
+    font-size: 2em;
+  }
+}
 
 h2,
 h3,
@@ -298,6 +303,15 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     display: inline-block;
     background-position: 0 0;
     left: 0;
+  }
+  .header__button--entradas {
+    padding: 1rem 1rem;
+    font-size: 1.1em;
+  }
+  .header__button--entradas:hover {
+    background-color: white;
+    color: var(--rojo-butaca);
+    animation: transicion-entradas 0.5s;
   }
 }
 /* ------------ FIN  menu superior ---------- */

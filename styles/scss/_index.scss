@@ -207,12 +207,15 @@ transform:scale(0.5);
         color: var(--hunyadi-yellow);
     }
     @media screen and (max-width: 1060px){
+    
     flex-wrap: wrap;
     &__h1 {
         width: 100%;
     }
+    
     }
 }
+
 
 
 .negro {
