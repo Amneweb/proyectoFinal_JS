@@ -31,6 +31,7 @@ h5,
 ul {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 p,
@@ -122,6 +123,7 @@ select::-ms-expand {
   display: none;
 }
 
+/* ------------   menu superior ---------- */
 .header {
   position: sticky;
   top: 0;
@@ -129,42 +131,45 @@ select::-ms-expand {
   background-color: var(--smoky-black);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+}
+.header__button--entradas {
+  background-color: var(--rojo-butaca);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  appearance: none;
+  border: transparent;
+  font-family: var(--oswald);
+  font-size: 1.3em;
+}
+.header__button--entradas:hover {
+  background-color: white;
+  color: var(--rojo-butaca);
+  animation: transicion-entradas 0.5s;
+}
+.header__button--entradas i {
+  margin-right: 1em;
 }
 
 .nav__ul {
   list-style-type: none;
+  display: flex;
+  gap: 4rem;
 }
 .nav__ul li {
-  display: inline-block;
   font-family: var(--oswald);
-  padding: 20px;
-  font-size: 20px;
+  font-size: 1.3em;
 }
 .nav__a {
-  padding: 10px;
-  text-decoration: none;
   color: white;
-  display: block;
 }
 .nav__a:hover {
   color: var(--rojo-butaca);
 }
 .nav__a i {
-  margin-right: 20px;
-}
-.nav__a--entradas {
-  background-color: var(--rojo-butaca);
-  color: white;
-  padding: 20px 50px 20px 50px;
-  border-radius: 5px;
-}
-.nav__a--entradas:hover {
-  background-color: white;
-  color: var(--rojo-butaca);
-  animation: transicion-entradas 0.5s;
-}
-.nav__a--entradas i {
-  margin-right: 20px;
+  margin-right: 1em;
 }
 
 @keyframes transicion-entradas {
@@ -180,7 +185,6 @@ select::-ms-expand {
 .logo__p {
   font-family: var(--logo);
   font-size: var(--size-h1);
-  padding: 10px 20px 20px 20px;
   color: white;
 }
 .logo__p::after {
@@ -195,6 +199,47 @@ select::-ms-expand {
   left: 0;
 }
 
+.header__button--abrir,
+.header__button--cerrar {
+  display: none;
+  border: none;
+  background-color: transparent;
+  appearance: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1060px) {
+  .header__button--abrir,
+  .header__button--cerrar {
+    display: block;
+  }
+  .nav {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 6rem;
+    bottom: 0;
+    right: 0;
+    background-color: var(--smoky-black);
+    padding: 3rem;
+    align-items: end;
+    gap: 1rem;
+    height: 100vh; /*porque no toma el background color */
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  }
+  .nav__ul {
+    flex-direction: column;
+    align-items: end;
+  }
+  .nav.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/* ------------ FIN  menu superior ---------- */
 .snacks__input {
   display: block;
   font-family: "Poppins", sans-serif;
@@ -1016,7 +1061,7 @@ select::-ms-expand {
 #showError p {
   color: #eeeeee;
 }
-#showError p .mensaje {
+#showError p.mensaje {
   font-size: 0.8em;
 }
 
