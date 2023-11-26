@@ -139,7 +139,7 @@ input#boton__entradas {
   &__ul {
     list-style-type: none;
     display:flex;
-    gap: 4rem;
+    gap: 3rem;
 
     li {
       font-family: var(--oswald);
@@ -222,6 +222,7 @@ input#boton__entradas {
     padding:3rem;
     align-items:end;
     gap:1rem;
+    height:100vh;
     box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
   }
   .nav__ul {
@@ -244,11 +245,11 @@ input#boton__entradas {
         content: '';
         background-image: url(../../assets/imagenes/estrellaVintage.png);
         width: 20px;
-        height: 20px;
+        height: 40px;
         background-size: 20px 20px;
         background-repeat: no-repeat;
         display: inline-block;
-        background-position: 0 0;
+        background-position: top right;
         left: 0;
       }
   

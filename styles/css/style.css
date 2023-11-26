@@ -207,7 +207,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .nav__ul {
   list-style-type: none;
   display: flex;
-  gap: 4rem;
+  gap: 3rem;
 }
 .nav__ul li {
   font-family: var(--oswald);
@@ -278,6 +278,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     padding: 3rem;
     align-items: end;
     gap: 1rem;
+    height: 100vh;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
   }
   .nav__ul {
@@ -297,11 +298,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     content: "";
     background-image: url(../../assets/imagenes/estrellaVintage.png);
     width: 20px;
-    height: 20px;
+    height: 40px;
     background-size: 20px 20px;
     background-repeat: no-repeat;
     display: inline-block;
-    background-position: 0 0;
+    background-position: top right;
     left: 0;
   }
   .header__button--entradas {
@@ -409,6 +410,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   color: white;
   border: dotted 10px var(--rojo-butaca);
 }
+@media screen and (max-width: 1060px) {
+  .hero__button--principal {
+    font-size: var(--size-h1);
+  }
+}
 .hero__p--secundario {
   font-style: italic;
   font-size: var(--size-h3);
@@ -420,8 +426,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 
 .main {
   display: flex;
-  padding: 80px 50px 80px 50px;
+  padding: 5rem 4rem;
   justify-content: space-evenly;
+}
+@media screen and (max-width: 1060px) {
+  .main {
+    padding: 4rem 1rem;
+  }
 }
 
 .secciones-entradas-api {
@@ -569,6 +580,8 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 @media screen and (max-width: 1060px) {
   .bienvenidos {
     flex-wrap: wrap;
+    margin: 3rem;
+    padding: 2rem;
   }
   .bienvenidos__h1 {
     width: 100%;
@@ -656,9 +669,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 
 @keyframes cerrar-entradas {
   from {
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   to {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -950,6 +967,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     background-color: transparent;
   }
 }
+/*-------------SALAS --------------------*/
 .salas__p--infantil::after, .salas__p--clasica::after, .salas__p--premium::after {
   content: "";
   display: inline;
@@ -983,7 +1001,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   padding: 40px;
   background-color: #f5f5f5;
 }
-
 .salas__item--info {
   padding: 20px;
 }
