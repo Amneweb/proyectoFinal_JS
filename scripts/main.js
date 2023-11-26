@@ -58,10 +58,18 @@ function simularOcupacion(funcion) {
 
 function dibujarPlatea(asientos) {
     const FRAGMENTO = new DocumentFragment();
+    const cerrarPlatea = document.createElement("button");
+        cerrarPlatea.id="cerrar-platea";
+        cerrarPlatea.classList.add("cerrar-platea");
+        cerrarPlatea.innerText="👍";
+        cerrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.remove("full"));
+        FRAGMENTO.append(cerrarPlatea);
     const pantalla = document.createElement("div");
     pantalla.classList.add("pantalla");
     pantalla.innerText = "Pantalla";
     FRAGMENTO.append(pantalla);
+    const soloPlatea = document.createElement("div");
+    soloPlatea.id="platea";
     asientos.forEach((arrayFila, indiceFila) => {
         const fila = document.createElement("div");
         fila.className = "fila";
@@ -79,8 +87,9 @@ function dibujarPlatea(asientos) {
             }
             fila.appendChild(lugar);
         });
-        FRAGMENTO.append(fila);
+        soloPlatea.append(fila);
     });
+    FRAGMENTO.append(soloPlatea);
     return FRAGMENTO;
 }
 
@@ -257,11 +266,12 @@ function mostrarTodo() {
                 
             </div>
             <div class="entradas__derecha">
+            
                 <div class="entradas__imagen">
                 </div>
                 <div class="entradas__datospeli">       
                 </div>     
-                <div class="platea" id="platea">   
+                <div class="contenedor-platea" id="contenedor-platea">   
                 </div>
                 <div class="carrito">
                 </div>
@@ -420,10 +430,11 @@ function enviarFormularioSelector(inputs) {
         const ENTRADAS_RESUMEN = document.querySelector(".entradas__resumen");
         armarCarritoEntradas(FUNCIONELEGIDA, entradasRequeridas);
         dibujarEntradasResumen(ENTRADAS_RESUMEN, recuperarStorage());
-        DOMplatea = document.querySelector("#platea");
+        DOMplatea = document.querySelector("#contenedor-platea");
         DOMplatea.append(dibujarPlatea(asientosFuncionElegida));
         DOMplatea.style["display"] = "block";
-        DOMplatea.addEventListener("click", (event) => {
+        const divPlatea = document.querySelector("#platea");
+        divPlatea.addEventListener("click", (event) => {
             seleccionDeAsientos(event, entradasRequeridas);
         });
     } else {
@@ -579,7 +590,7 @@ const sweetCantidad = (condicion) => {
 function mostrarSnacks() {
     document.querySelector("#botones").remove();
     document.querySelector("#advertencia").remove();
-    document.querySelector("#platea").style["display"] = "none";
+    document.querySelector("#contenedor-platea").style["display"] = "none";
     BOTON_PAGAR(".entradas__resumen");
     document.querySelector(".carrito").innerHTML = `
         <h3>¿querés agregar snacks?</h3>
@@ -681,8 +692,12 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--left">Precio unitario</div>
                 <div class="datospeli__item datospeli__item--right">${currency(funcionelegida.precio)}</div>
                 <div class="datospeli__item datospeli__item--left">Asientos</div>
-                <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran a la derecha.</p></div>
+                <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran en la platea.</p></div>
+                <button id="mostrar-platea">Ver platea</button>
+                </div>
                 </div>`;
+                const mostrarPlatea = document.querySelector("#mostrar-platea");
+                mostrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.add("full"));
 }
 
 const coordenadas = (id) => {

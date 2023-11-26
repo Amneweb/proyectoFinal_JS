@@ -296,9 +296,9 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .logo__p::after {
     content: "";
     background-image: url(../../assets/imagenes/estrellaVintage.png);
-    width: 30px;
-    height: 30px;
-    background-size: 30px 30px;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
     background-repeat: no-repeat;
     display: inline-block;
     background-position: 0 0;
@@ -886,6 +886,70 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   display: flex;
 }
 
+.asientos__elegidos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+.asientos__elegidos p {
+  border: solid 1px var(--smoky-black);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+.asientos__elegidos p.aclaracion {
+  border: solid 1px var(--hunyadi-yellow);
+  border-radius: 5px;
+  font-size: 0.8em;
+  background-color: lightyellow;
+}
+.asientos__elegidos p.aclaracion i {
+  color: var(--hunyadi-yellow);
+  margin-right: 10px;
+}
+
+.cerrar-platea {
+  display: none;
+}
+
+@media screen and (max-width: 1060px) {
+  .entradas {
+    flex-wrap: wrap;
+  }
+  .entradas__izquierda,
+  .entradas__derecha {
+    width: 100%;
+  }
+  .entradas__datospeli,
+  .entradas__imagen {
+    display: none;
+  }
+  .contenedor-platea {
+    position: fixed;
+    top: 5%;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: 0.3s ease-in;
+  }
+  .contenedor-platea.full {
+    visibility: visible;
+    opacity: 1;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  }
+  .cerrar-platea {
+    display: block;
+    position: absolute;
+    top: 2%;
+    left: 95%;
+    border: none;
+    background-color: transparent;
+  }
+}
 .salas__p--infantil::after, .salas__p--clasica::after, .salas__p--premium::after {
   content: "";
   display: inline;
@@ -978,29 +1042,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   font-size: var(--size-h3);
 }
 
-.asientos__elegidos {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  row-gap: 5px;
-}
-.asientos__elegidos p {
-  border: solid 1px var(--smoky-black);
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 1em;
-}
-.asientos__elegidos p.aclaracion {
-  border: solid 1px var(--hunyadi-yellow);
-  border-radius: 5px;
-  font-size: 0.8em;
-  background-color: lightyellow;
-}
-.asientos__elegidos p.aclaracion i {
-  color: var(--hunyadi-yellow);
-  margin-right: 10px;
-}
-
 #botones {
   display: flex;
 }
@@ -1020,7 +1061,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   width: 50%;
 }
 
-.platea {
+.contenedor-platea {
   display: none;
 }
 
@@ -1168,7 +1209,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   font-size: 0.8em;
 }
 
-.platea {
+.contenedor-platea {
   width: auto;
   background-color: white;
   border: 1px solid #cccccc;
@@ -1185,6 +1226,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   border-radius: 50%;
   cursor: pointer;
   appearance: none;
+  margin: 1px;
 }
 .asiento:checked {
   background-color: palegreen;
