@@ -34,10 +34,10 @@ En este caso también se abre un overlay, esta vez con los datos de la película
 * Al cargar la página, las secciones Cartelera y Snacks se 'dibujan' desde Javascript. Las salas ya están cargadas en el html.
 * **IMPORTANTE** La película de cartelera Africa Mía tiene un id erróneo, de manera que cuando se busca la info en la API salta un error, que es 'atrapado' con el catch y la función errorHandler.
 ## Mejoras pendientes
-* Hacer que la página sea responsive
+* Hacer que la página sea responsive :+1:
 * Finalizar la sección de contactos
 * Mejorar detalles de estilos como márgenes, tamaños y colores
-* Agregar animaciones para abrir y cerrar pantallas o carteles
+* Agregar animaciones para abrir y cerrar pantallas o carteles :+1:
 * Corregir flechas en carousel, que se hagan transparentes cuando el carousel llega al final
 * Generar un PDF con QR al final de la compra
 
