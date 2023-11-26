@@ -1016,7 +1016,7 @@ select::-ms-expand {
 #showError p {
   color: #eeeeee;
 }
-#showError p .mensaje {
+#showError p.mensaje {
   font-size: 0.8em;
 }
 
