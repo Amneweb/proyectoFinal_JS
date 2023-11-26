@@ -58,12 +58,7 @@ function simularOcupacion(funcion) {
 
 function dibujarPlatea(asientos) {
     const FRAGMENTO = new DocumentFragment();
-    const cerrarPlatea = document.createElement("button");
-        cerrarPlatea.id="cerrar-platea";
-        cerrarPlatea.classList.add("cerrar-platea");
-        cerrarPlatea.innerText="👍";
-        cerrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.remove("full"));
-        FRAGMENTO.append(cerrarPlatea);
+    
     const pantalla = document.createElement("div");
     pantalla.classList.add("pantalla");
     pantalla.innerText = "Pantalla";
@@ -90,6 +85,12 @@ function dibujarPlatea(asientos) {
         soloPlatea.append(fila);
     });
     FRAGMENTO.append(soloPlatea);
+    const cerrarPlatea = document.createElement("button");
+        cerrarPlatea.id="cerrar-platea";
+        cerrarPlatea.classList.add("cerrar-platea");
+        cerrarPlatea.innerText="CONFIRMAR Y CERRAR 👍";
+        cerrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.remove("full"));
+        FRAGMENTO.append(cerrarPlatea);
     return FRAGMENTO;
 }
 

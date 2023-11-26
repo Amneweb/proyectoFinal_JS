@@ -101,6 +101,10 @@ transform:scale(0.5);
             background-size: 100px 100px;
             background-repeat: no-repeat;
             background-position: top right;
+            @media screen and (max-width:1060px) {
+                display:none;
+            }
+
         }
     }
 
@@ -280,7 +284,9 @@ transform:scale(0.5);
             background-size: 100px 100px;
             background-repeat: no-repeat;
             background-position: top right;
-
+            @media screen and (max-width:1060px) {
+                display:none;
+            }
         }
 
         i.cerrar {
@@ -650,11 +656,13 @@ margin-top:2%;
     }
     .cerrar-platea {
         display:block;
-        position:absolute;
-        top:2%;
-        left:95%;
-        border:none;
+        margin:10px auto auto auto;
+        border:solid 1px green;
+        border-radius:5px;
         background-color:transparent;
+        padding:0.2rem;
+        right:2%;
+        cursor:pointer;
     }
 
 }

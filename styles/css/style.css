@@ -481,6 +481,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-repeat: no-repeat;
   background-position: top right;
 }
+@media screen and (max-width: 1060px) {
+  .section__titulo--api h4:after {
+    display: none;
+  }
+}
 
 #datosPelicula {
   margin: 40px;
@@ -640,6 +645,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-size: 100px 100px;
   background-repeat: no-repeat;
   background-position: top right;
+}
+@media screen and (max-width: 1060px) {
+  .section__titulo--entradas h2::after {
+    display: none;
+  }
 }
 .section__titulo--entradas i.cerrar {
   font-size: var(--size-h3);
@@ -961,11 +971,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   }
   .cerrar-platea {
     display: block;
-    position: absolute;
-    top: 2%;
-    left: 95%;
-    border: none;
+    margin: 10px auto auto auto;
+    border: solid 1px green;
+    border-radius: 5px;
     background-color: transparent;
+    padding: 0.2rem;
+    right: 2%;
+    cursor: pointer;
   }
 }
 /*-------------SALAS --------------------*/
@@ -1262,7 +1274,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   border-radius: 50%;
   cursor: pointer;
   appearance: none;
-  margin: 1px;
+  margin: 5px;
 }
 .asiento:checked {
   background-color: palegreen;
@@ -1300,6 +1312,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   font-family: var(--oswald);
   border-bottom: 1px solid black;
   margin-bottom: 10px;
+  margin-top: 10px;
   padding: 10px;
   text-align: center;
 }
