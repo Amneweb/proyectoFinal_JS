@@ -42,11 +42,15 @@ pelis.forEach((elemento) => {
     botonCartelera.id = elemento.id;
     botonCartelera.innerText = "elegir";
     botonCartelera.style.cursor = "pointer";
+    botonCartelera.addEventListener("click", (event) => sweet(event.target.id));
     const botonFetch = document.createElement("div");
     botonFetch.className = "cartelera__boton";
     botonFetch.id = elemento.imdbID;
     botonFetch.innerText = "ver más (*)";
     botonFetch.style.cursor = "pointer";
+    botonFetch.addEventListener("click", (event) => {
+        overlay.classList.remove("activa");
+        apitmdb(event.target.id)} );
     contenedorBotones.append(botonFetch);
     contenedorBotones.append(botonCartelera);
     overlay.append(contenedorBotones);
@@ -58,8 +62,8 @@ pelis.forEach((elemento) => {
     overlay.append(tmdb);
     peliculaEnCartelera.append(overlay);
     document.querySelector(".cartelera__contenedor").appendChild(peliculaEnCartelera);
-    botonCartelera.addEventListener("click", (event) => sweet(event.target.id));
-    botonFetch.addEventListener("click", (event) => apitmdb(event.target.id));
+    
+    
 });
 
 const sectionSnacks = document.querySelector(".snacks");

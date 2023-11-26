@@ -12,7 +12,7 @@ boton_cerrar.addEventListener("click", () => {
   showError.innerHTML = "";
   datosPelicula.innerHTML = "";
   showError.style['display']="none";
-  section__api.style['display'] = "none";
+  section__api.classList.remove("activa");
 });
 
 const loader = document.querySelector(".loader");
@@ -26,7 +26,7 @@ const errorHandler = (error, dedonde) => {
 let resultado_pelicula = {};
 
 async function apitmdb(id) {
-  section__api.style["display"] = "block";
+  section__api.classList.add("activa");
   const apiURL = 'https://api.themoviedb.org/3/find/' + id + '?external_source=imdb_id&language=es-ES';
   await fetchapitmdb(apiURL);
 }
