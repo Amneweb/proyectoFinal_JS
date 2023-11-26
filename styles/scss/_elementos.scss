@@ -45,7 +45,7 @@ input#entradas,
 input#boton__entradas {
   @extend %inputs;
 }
-
+/* ------------   menu superior ---------- */
 .header {
   position: sticky;
   top: 0;
@@ -53,40 +53,19 @@ input#boton__entradas {
   background-color: var(--smoky-black);
   display: flex;
   justify-content: space-between;
-}
+  align-items:center;
+  padding:1.2rem;
 
-.nav {
-  &__ul {
-    list-style-type: none;
-
-    li {
-      display: inline-block;
-      font-family: var(--oswald);
-      padding: 20px;
-      font-size: 20px;
-    }
-  }
-
-  &__a {
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    display: block;
-
-    &:hover {
-      color: var(--rojo-butaca);
-    }
-
-    i {
-      margin-right: 20px;
-    }
-  }
-
-  &__a--entradas {
+  &__button--entradas {
     background-color: var(--rojo-butaca);
     color: white;
-    padding: 20px 50px 20px 50px;
+    padding: 1rem 2rem;
     border-radius: 5px;
+    appearance:none;
+    border:transparent;
+    font-family: var(--oswald);
+    font-size: 1.3em;
+    
 
     &:hover {
       background-color: white;
@@ -95,9 +74,36 @@ input#boton__entradas {
     }
 
     i {
-      margin-right: 20px;
+      margin-right: 1em;
     }
   }
+}
+
+.nav {
+  &__ul {
+    list-style-type: none;
+    display:flex;
+    gap: 4rem;
+
+    li {
+      font-family: var(--oswald);
+      font-size: 1.3em;
+    }
+  }
+
+  &__a {
+    color: white;
+
+    &:hover {
+      color: var(--rojo-butaca);
+    }
+
+    i {
+      margin-right: 1em;
+    }
+  }
+
+  
 }
 
 @keyframes transicion-entradas {
@@ -111,25 +117,68 @@ input#boton__entradas {
     color: var(--rojo-butaca);
   }
 }
+.logo {
 
-.logo__p {
-  font-family: var(--logo);
-  font-size: var(--size-h1);
-  padding: 10px 20px 20px 20px;
-  color: white;
+  &__p {
+    font-family: var(--logo);
+    font-size: var(--size-h1);
+    color: white;
 
-  &::after {
-    content: '';
-    background-image: url(../../assets/imagenes/estrellaVintage.png);
-    width: 50px;
-    height: 50px;
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    background-position: 0 0;
-    left: 0;
+    &::after {
+      content: '';
+      background-image: url(../../assets/imagenes/estrellaVintage.png);
+      width: 50px;
+      height: 50px;
+      background-size: 50px 50px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      background-position: 0 0;
+      left: 0;
+    }
+
   }
 }
+.header__button--abrir,
+.header__button--cerrar {
+  display:none;
+  border:none;
+  background-color:transparent;
+  appearance:none;
+  color:white;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width:1060px) {
+  .header__button--abrir,
+  .header__button--cerrar {
+    display:block;
+  }
+  .nav {
+    opacity:0;
+    visibility:hidden;
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:6rem;
+    bottom:0;
+    right:0;
+    background-color:var(--smoky-black);
+    padding:3rem;
+    align-items:end;
+    gap:1rem;
+    height:100vh; /*porque no toma el background color */
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
+  }
+  .nav__ul {
+    flex-direction:column;
+    align-items: end;
+  }
+  .nav.visible {
+    opacity:1;
+    visibility:visible;
+  }
+}
+/* ------------ FIN  menu superior ---------- */
 
 .snacks__input {
   display: block;
