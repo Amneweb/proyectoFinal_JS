@@ -470,7 +470,7 @@ function armarDOM(id = "") {
 function borrarTodo() {
     divEntradas = document.querySelector("#section__entradas");
     divEntradas.innerHTML = "";
-    divEntradas.style['display'] = "none";
+    divEntradas.classList.remove("activa");
 }
 
 function sweet(id = undefined) {
@@ -493,13 +493,13 @@ function sweet(id = undefined) {
                 sessionStorage.removeItem("compra");
                 mostrarTodo(id);
                 armarDOM(id);
-                document.querySelector("#section__entradas").style["display"] = "block";
+                document.querySelector("#section__entradas").classList.add("activa");
             } 
         })
     } else {
         mostrarTodo(id);
         armarDOM(id);
-        document.querySelector("#section__entradas").style["display"] = "block";
+        document.querySelector("#section__entradas").classList.add("activa");
     }
 }
 
