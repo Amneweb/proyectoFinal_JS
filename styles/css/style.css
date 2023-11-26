@@ -20,15 +20,7 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
-body,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-ul {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -79,6 +71,7 @@ h5 {
   font-size: var(--size-h5);
 }
 
+/* ------------ botones ---------- */
 select#select__pelicula,
 select#select__funcion {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E3A446ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
@@ -88,7 +81,7 @@ select#select__funcion {
 input#boton__entradas, select#select__pelicula,
 select#select__funcion {
   display: block;
-  font-size: 16px;
+  font-size: 1em;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   color: rgb(18, 17, 17);
@@ -118,11 +111,64 @@ select#select__funcion option.select--disabled {
   color: grey;
 }
 
-/*para sacar flecha en explorers viejos*/
-select::-ms-expand {
+select::-ms-expand { /*para sacar flecha en explorers viejos*/
   display: none;
 }
 
+.boton-ver-mas { /*en overlay de cartelera*/
+  appearance: none;
+  border: none;
+  background-color: none;
+  text-align: right;
+  margin: 10px;
+  font-size: 0.8em;
+  color: var(--hunyadi-yellow);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.snacks__input {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  color: var(--smoky-black);
+  padding: 3px 5px;
+  width: 80%;
+  max-width: 80%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+  margin: 5px auto 10px auto;
+}
+.snacks__input:hover {
+  background-color: white;
+  color: var(--rojo-butaca);
+}
+
+.boton_pagar {
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
+.boton_pagar i {
+  color: var(--hunyadi-yellow);
+  margin-right: 10px;
+}
+
+.basura {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+/* ------------   FIN botones ---------- */
 /* ------------   menu superior ---------- */
 .header {
   position: sticky;
@@ -227,7 +273,6 @@ select::-ms-expand {
     padding: 3rem;
     align-items: end;
     gap: 1rem;
-    height: 100vh; /*porque no toma el background color */
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
   }
   .nav__ul {
@@ -238,49 +283,24 @@ select::-ms-expand {
     opacity: 1;
     visibility: visible;
   }
+  .logo__p {
+    font-family: var(--logo);
+    font-size: var(--size-h3);
+    color: white;
+  }
+  .logo__p::after {
+    content: "";
+    background-image: url(../../assets/imagenes/estrellaVintage.png);
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: 0 0;
+    left: 0;
+  }
 }
 /* ------------ FIN  menu superior ---------- */
-.snacks__input {
-  display: block;
-  font-family: "Poppins", sans-serif;
-  color: var(--smoky-black);
-  padding: 3px 5px;
-  width: 80%;
-  max-width: 80%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: white;
-  cursor: pointer;
-  margin: 5px auto 10px auto;
-}
-.snacks__input:hover {
-  background-color: white;
-  color: var(--rojo-butaca);
-}
-
-.boton_pagar {
-  cursor: pointer;
-  background-color: green;
-  color: white;
-}
-.boton_pagar i {
-  color: var(--hunyadi-yellow);
-  margin-right: 10px;
-}
-
-.basura {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-}
-
 .title-final {
   font-family: var(--logo);
   font-size: var(--size-h1);
@@ -322,18 +342,6 @@ select::-ms-expand {
   background-color: var(--rojo-butaca);
 }
 
-.boton-ver-mas {
-  appearance: none;
-  border: none;
-  background-color: none;
-  text-align: right;
-  margin: 10px;
-  font-size: 0.8em;
-  color: var(--hunyadi-yellow);
-  background-color: transparent;
-  cursor: pointer;
-}
-
 .loader {
   border: 10px solid #f3f3f3;
   border-top: 10px solid var(--hunyadi-yellow);
@@ -368,20 +376,22 @@ select::-ms-expand {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.hero__p--principal {
+.hero__button--principal {
   text-align: center;
   text-transform: uppercase;
   font-size: calc(var(--size-h1) * 1.2);
   font-family: var(--oswald);
   font-weight: var(--weight-p-bold);
-}
-.hero__p--principal a {
   border: dotted 10px white;
   display: block;
   color: var(--rojo-butaca);
   padding: 20px 30px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
 }
-.hero__p--principal a:hover {
+.hero__button--principal:hover {
   color: white;
   border: dotted 10px var(--rojo-butaca);
 }
@@ -399,12 +409,12 @@ select::-ms-expand {
   padding: 80px 50px 80px 50px;
   justify-content: space-evenly;
 }
-.main form {
-  text-align: center;
-}
 
-#section__entradas, #section__api {
-  display: none;
+.secciones-entradas-api {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 0.3s;
   position: fixed;
   border-radius: 10px;
   top: 5%;
@@ -415,11 +425,17 @@ select::-ms-expand {
   outline: 9999px solid rgba(0, 0, 0, 0.5);
   overflow: auto;
 }
-#section__entradas h2, #section__api h2 {
+.secciones-entradas-api h2 {
   font-size: var(--size-h3);
 }
-#section__entradas h3, #section__api h3 {
+.secciones-entradas-api h3 {
   font-size: 1.5em;
+}
+
+.secciones-entradas-api.activa {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .section__titulo--api {
@@ -515,8 +531,8 @@ select::-ms-expand {
 
 .bienvenidos {
   display: flex;
-  margin: 50px;
-  padding: 50px;
+  margin: 5rem;
+  padding: 4rem;
   border: dotted 5px var(--rojo-butaca);
   align-items: center;
   background-image: url(../../assets/imagenes/estrellaVintageTopRight.png);
@@ -535,6 +551,14 @@ select::-ms-expand {
 }
 .bienvenidos__span {
   color: var(--hunyadi-yellow);
+}
+@media screen and (max-width: 1060px) {
+  .bienvenidos {
+    flex-wrap: wrap;
+  }
+  .bienvenidos__h1 {
+    width: 100%;
+  }
 }
 
 .negro {
@@ -695,6 +719,34 @@ select::-ms-expand {
 .cartelera__iconoi {
   margin: 50% auto;
 }
+@media screen and (max-width: 1060px) {
+  .cartelera__div--imagen {
+    width: 45%;
+    min-width: 42%;
+    margin-right: 2%;
+    position: relative;
+  }
+  .cartelera__div--overlay {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: var(--rojo-butaca);
+    overflow: scroll;
+    transition: 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+    transform: scale(0.5);
+  }
+  .cartelera__div--overlay.overlay_activa {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    border-radius: 10px;
+  }
+}
 
 .to-right--cartelera,
 .to-right--snacks {
@@ -704,6 +756,43 @@ select::-ms-expand {
 .to-left--cartelera,
 .to-left--snacks {
   left: 30px;
+}
+
+@media screen and (max-width: 1060px) {
+  .to-right--cartelera,
+  .to-right--snacks,
+  .to-left--cartelera,
+  .to-left--snacks {
+    display: none;
+  }
+}
+.boton-cerrar-overlay, .boton-ver-overlay {
+  background-color: transparent;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  display: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 1060px) {
+  .boton-cerrar-overlay, .boton-ver-overlay {
+    display: block;
+  }
+}
+
+.boton-ver-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.boton-cerrar-overlay {
+  margin-left: 90%;
+  margin-top: 2%;
 }
 
 .contenedorBotones {

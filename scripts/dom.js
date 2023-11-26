@@ -19,8 +19,18 @@ pelis.forEach((elemento) => {
     poster.src = `assets/imagenes/peliculas/${elemento.id}.jpg`;
     poster.className = "cartelera__img";
     peliculaEnCartelera.append(poster);
+    const botonVerOverlay=document.createElement("button");
+    botonVerOverlay.classList.add("boton-ver-overlay");
+    botonVerOverlay.addEventListener("click",()=>overlay.classList.add("overlay_activa"));
+    botonVerOverlay.innerHTML=`<i class="fa-solid fa-circle-info"></i>`;
+    peliculaEnCartelera.append(botonVerOverlay);
     const overlay = document.createElement("div");
     overlay.className = "cartelera__div--overlay";
+    const botonCerrarOverlay=document.createElement("button");
+    botonCerrarOverlay.classList.add("boton-cerrar-overlay");
+    botonCerrarOverlay.addEventListener("click",()=>overlay.classList.remove("overlay_activa"));
+    botonCerrarOverlay.innerHTML=`<i class="fa-solid fa-xmark"></i>`;
+    overlay.append(botonCerrarOverlay);
     const texto = document.createElement("div");
     texto.className = "cartelera__datospeli";
     texto.append(armarDatosPeli(elemento, texto));
