@@ -308,6 +308,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .header__button--entradas {
     padding: 1rem 1rem;
     font-size: 1.1em;
+    background-color: var(--hunyadi-yellow);
   }
   .header__button--entradas:hover {
     background-color: white;
@@ -996,11 +997,17 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .salas__div {
   display: grid;
   grid-template-columns: 30% 15% 55%;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto;
   margin-bottom: 50px;
   padding: 40px;
   background-color: #f5f5f5;
 }
+@media screen and (max-width: 1060px) {
+  .salas__div {
+    grid-template-columns: 25% 75%;
+  }
+}
+
 .salas__item--info {
   padding: 20px;
 }
@@ -1020,6 +1027,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   max-width: 100%;
   object-fit: cover;
   height: 100%;
+}
+@media screen and (max-width: 1060px) {
+  .salas__item--foto {
+    grid-area: 1/1/2/3;
+  }
 }
 
 .select {
@@ -1048,6 +1060,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 .snacks__item--contenido {
   padding: 20px;
+}
+@media screen and (max-width: 1060px) {
+  .snacks__item {
+    width: 45%;
+    min-width: 42%;
+    margin: 2%;
+  }
 }
 .snacks__p {
   color: #eeeeee;
