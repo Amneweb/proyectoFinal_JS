@@ -890,6 +890,16 @@ padding:20px;
                 margin: auto;
             }
         }
+        
+    }
+    @media screen and (max-width:1060px) {
+        &__flexSnacks {
+        margin:10px 5px;
+        overflow:scroll;
+        .snacks__item {
+            width:100%;
+        }
+    }
     }
 
 }
