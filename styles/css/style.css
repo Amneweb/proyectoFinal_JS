@@ -204,10 +204,16 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin-right: 1em;
 }
 
+.nav {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-between;
+}
 .nav__ul {
   list-style-type: none;
   display: flex;
   gap: 3rem;
+  align-items: center;
 }
 .nav__ul li {
   font-family: var(--oswald);
@@ -268,10 +274,10 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .nav {
     opacity: 0;
     visibility: hidden;
-    display: flex;
+    justify-content: start;
     flex-direction: column;
     position: absolute;
-    top: 6rem;
+    top: 5rem;
     bottom: 0;
     right: 0;
     background-color: var(--smoky-black);
@@ -284,6 +290,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .nav__ul {
     flex-direction: column;
     align-items: end;
+    order: 2;
   }
   .nav.visible {
     opacity: 1;
@@ -1016,7 +1023,8 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 @media screen and (max-width: 1060px) {
   .salas__div {
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 70%;
+    padding: 20px;
   }
 }
 
@@ -1043,6 +1051,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 @media screen and (max-width: 1060px) {
   .salas__item--foto {
     grid-area: 1/1/2/3;
+  }
+  .salas__item--foto img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
   }
 }
 
