@@ -91,6 +91,15 @@ input#boton__entradas {
     margin-right: 10px;
   }
 }
+.mostrar-platea {
+  @extend %inputs;
+  cursor:pointer;
+  background-color: var(--hunyadi-yellow);
+  i {
+    
+    margin-right: 10px;
+  }
+}
 
 .basura {
   -moz-appearance: none;
@@ -99,6 +108,10 @@ input#boton__entradas {
   background-color: transparent;
   cursor: pointer;
   border: none;
+  @media screen and (max-width:1060px) {
+    i {font-size: 1.5em;}
+    
+  }
 }
 /* ------------   FIN botones ---------- */
 /* ------------   menu superior ---------- */

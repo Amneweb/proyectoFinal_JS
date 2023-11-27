@@ -82,7 +82,7 @@ select#select__funcion {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E3A446ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
-.boton, .boton_pagar, input#entradas,
+.boton, .mostrar-platea, .boton_pagar, input#entradas,
 input#boton__entradas, select#select__pelicula,
 select#select__funcion {
   display: block;
@@ -164,6 +164,14 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin-right: 10px;
 }
 
+.mostrar-platea {
+  cursor: pointer;
+  background-color: var(--hunyadi-yellow);
+}
+.mostrar-platea i {
+  margin-right: 10px;
+}
+
 .basura {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -171,6 +179,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-color: transparent;
   cursor: pointer;
   border: none;
+}
+@media screen and (max-width: 1060px) {
+  .basura i {
+    font-size: 1.5em;
+  }
 }
 
 /* ------------   FIN botones ---------- */
@@ -489,6 +502,9 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-position: top right;
 }
 @media screen and (max-width: 1060px) {
+  .section__titulo--api h4 {
+    font-size: 2em;
+  }
   .section__titulo--api h4:after {
     display: none;
   }
@@ -497,9 +513,19 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 #datosPelicula {
   margin: 40px;
 }
+@media screen and (max-width: 1060px) {
+  #datosPelicula {
+    margin: 20px;
+  }
+}
 
 #actores {
   margin: 40px;
+}
+@media screen and (max-width: 1060px) {
+  #actores {
+    margin: 20px;
+  }
 }
 
 .contenedor_tarjetas {
@@ -529,6 +555,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   max-width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+@media screen and (max-width: 1060px) {
+  .card_actor {
+    width: 45%;
+  }
 }
 
 .section__entradas--cerrar {
@@ -972,6 +1003,8 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     visibility: visible;
     opacity: 1;
     width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     left: 50%;
     transform: translateX(-50%) scale(1);
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
@@ -1088,8 +1121,8 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 @media screen and (max-width: 1060px) {
   .snacks__item {
-    width: 45%;
-    min-width: 42%;
+    width: 55%;
+    min-width: 52%;
     margin: 2%;
   }
 }
@@ -1220,6 +1253,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   width: 100%;
   column-gap: 4%;
 }
+@media screen and (max-width: 1060px) {
+  .datos_pelicula {
+    flex-direction: column;
+    padding: 0;
+    margin-top: 20px;
+  }
+}
 
 .poster_pelicula {
   width: 28%;
@@ -1227,9 +1267,19 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .poster_pelicula img {
   max-width: 100%;
 }
+@media screen and (max-width: 1060px) {
+  .poster_pelicula {
+    width: 100%;
+  }
+}
 
 .info_pelicula {
   width: 68%;
+}
+@media screen and (max-width: 1060px) {
+  .info_pelicula {
+    width: 100%;
+  }
 }
 
 .row_info_pelicula {
@@ -1277,17 +1327,18 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   height: auto;
   padding: 0 30px 30px 30px;
   align-self: flex-start;
+  overflow: scroll;
 }
 
 .asiento {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border: solid 1px;
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
   appearance: none;
-  margin: 5px;
+  margin: 2px;
 }
 .asiento:checked {
   background-color: palegreen;

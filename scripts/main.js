@@ -663,6 +663,7 @@ function dibujarBotones() {
     BOTONES.append(BOTON_CAMBIAR);
     FRAGMENTO.appendChild(BOTONES);
     BOTON_ACEPTAR.addEventListener("click", () => {
+        document.querySelector("#mostrar-platea").style["display"]="none";
         mostrarSnacks();
     });
     BOTON_CAMBIAR.addEventListener("click", () => {
@@ -694,8 +695,8 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--right">${currency(funcionelegida.precio)}</div>
                 <div class="datospeli__item datospeli__item--left">Asientos</div>
                 <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran en la platea.</p></div>
-                <button id="mostrar-platea">Ver platea</button>
                 </div>
+                <button id="mostrar-platea" class="mostrar-platea"><i class="fa-solid fa-braille"></i>Ver platea</button>
                 </div>`;
                 const mostrarPlatea = document.querySelector("#mostrar-platea");
                 mostrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.add("full"));

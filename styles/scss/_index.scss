@@ -101,10 +101,10 @@ transform:scale(0.5);
             background-size: 100px 100px;
             background-repeat: no-repeat;
             background-position: top right;
-            @media screen and (max-width:1060px) {
-                display:none;
-            }
-
+        }
+        @media screen and (max-width:1060px) {
+            font-size:2em;
+            &:after {display:none;}
         }
     }
 
@@ -113,10 +113,16 @@ transform:scale(0.5);
 
 #datosPelicula {
     margin: 40px;
+    @media screen and (max-width:1060px) {
+        margin:20px;
+    }
 }
 
 #actores {
     margin: 40px;
+    @media screen and (max-width:1060px) {
+        margin:20px;
+    }
 
 }
 
@@ -149,6 +155,9 @@ transform:scale(0.5);
         max-width: 100%;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+    }
+    @media screen and (max-width:1060px) {
+        width:45%;
     }
 }
 
@@ -649,6 +658,8 @@ margin-top:2%;
         visibility:visible;
         opacity:1;
         width:auto;
+        padding-left:40px;
+        padding-right:40px;
         left:50%;
         transform:translateX(-50%) scale(1);
         box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
@@ -795,8 +806,8 @@ padding:20px;
             padding: 20px;
         }
         @media screen and (max-width:1060px) {
-            width:45%;
-            min-width:42%;
+            width:55%;
+            min-width:52%;
             margin:2%;
         }
     }
@@ -955,6 +966,11 @@ padding:20px;
     padding: 30px;
     width: 100%;
     column-gap: 4%;
+    @media screen and (max-width:1060px) {
+        flex-direction:column;
+        padding:0;
+        margin-top:20px;
+    }
 }
 
 .poster_pelicula {
@@ -963,10 +979,16 @@ padding:20px;
     img {
         max-width: 100%;
     }
+    @media screen and (max-width:1060px) {
+        width:100%;
+    }
 }
 
 .info_pelicula {
     width: 68%;
+    @media screen and (max-width:1060px) {
+        width:100%;
+    }
 }
 
 .row_info_pelicula {
