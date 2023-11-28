@@ -167,9 +167,15 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .mostrar-platea {
   cursor: pointer;
   background-color: var(--hunyadi-yellow);
+  display: none;
 }
 .mostrar-platea i {
   margin-right: 10px;
+}
+@media screen and (max-width: 1060px) {
+  .mostrar-platea {
+    display: block;
+  }
 }
 
 .basura {
@@ -1008,6 +1014,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     left: 50%;
     transform: translateX(-50%) scale(1);
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    overflow: auto;
   }
   .cerrar-platea {
     display: block;
@@ -1189,6 +1196,15 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .carrito__flexSnacks .snacks__item img {
   max-width: 80%;
   margin: auto;
+}
+@media screen and (max-width: 1060px) {
+  .carrito__flexSnacks {
+    margin: 10px 5px;
+    overflow: scroll;
+  }
+  .carrito__flexSnacks .snacks__item {
+    width: 100%;
+  }
 }
 
 .input_escondido {

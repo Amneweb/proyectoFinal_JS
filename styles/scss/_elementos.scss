@@ -95,9 +95,13 @@ input#boton__entradas {
   @extend %inputs;
   cursor:pointer;
   background-color: var(--hunyadi-yellow);
+  display:none;
   i {
     
     margin-right: 10px;
+  }
+  @media screen and (max-width:1060px) {
+    display:block;
   }
 }
 

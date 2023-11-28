@@ -390,10 +390,10 @@ function dibujarSnacksElegidos() {
         resultados[0].forEach((elemento) => {
             const snacksDIV = document.createElement("div");
             snacksDIV.classList.add("lista-snacks");
-            snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p><button class="basura" id="borrar-${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
+            snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p><button class="basura" id="borrar_${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
             listadoSnacks.appendChild(snacksDIV);
-            document.querySelector(`#borrar-${elemento[0].id}`).addEventListener("click", (event) => {
-                borrarCarritoSnacks(event.target.id);
+            document.querySelector(`#borrar_${elemento[0].id}`).addEventListener("click", () => {
+                borrarCarritoSnacks(elemento[0].id);
             });
         });
         const snacksTotales = document.createElement("div");
@@ -623,8 +623,7 @@ function generarCarritoSnacks(id) {
 }
 
 function borrarCarritoSnacks(id) {
-    const nuevoID = id.slice(7);
-    carrito.splice(carrito.findIndex((elemento) => elemento.id === nuevoID), 1);
+    carrito.splice(carrito.findIndex((elemento) => elemento.id === id), 1);
     cargarStorage();
     dibujarSnacksElegidos();
 }
