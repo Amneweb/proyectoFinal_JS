@@ -91,7 +91,7 @@ input#boton__entradas {
     margin-right: 10px;
   }
 }
-.mostrar-platea {
+.mostrar-platea, .mostrar-snacks {
   @extend %inputs;
   cursor:pointer;
   background-color: var(--hunyadi-yellow);
@@ -104,6 +104,7 @@ input#boton__entradas {
     display:block;
   }
 }
+
 
 .basura {
   -moz-appearance: none;

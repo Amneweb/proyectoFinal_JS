@@ -434,8 +434,8 @@ transform:scale(0.5);
     }
  @media screen and (max-width:1060px){
     &__div--imagen {
-        width: 45%;
-        min-width: 42%;
+        width: 60%;
+        min-width: 58%;
         margin-right: 2%;
         position: relative;
 
@@ -657,9 +657,10 @@ margin-top:2%;
     .contenedor-platea.full {
         visibility:visible;
         opacity:1;
-        width:auto;
-        padding-left:40px;
-        padding-right:40px;
+        width:90%;
+        height:90%;
+        padding-left:20px;
+        padding-right:20px;
         left:50%;
         transform:translateX(-50%) scale(1);
         box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
@@ -869,39 +870,65 @@ padding:20px;
         margin: 10px 20px;
         display: flex;
         flex-wrap: wrap;
-        color: white;
 
-        .snacks__item {
-            margin: 5px;
-            display: flex;
-            width: 23%;
-
-            p {
-                font-size: 0.8em;
-                margin: 5px;
-            }
-
-            &--contenido {
-                padding: 5px;
-            }
-
-            img {
-                max-width: 80%;
-                margin: auto;
-            }
-        }
+        
         
     }
-    @media screen and (max-width:1060px) {
-        &__flexSnacks {
-        margin:10px 5px;
-        overflow:scroll;
-        .snacks__item {
-            width:100%;
-        }
-    }
+    
+
+}
+.snacks__item {
+    margin: 5px;
+    display: flex;
+    width: 23%;
+
+    p {
+        font-size: 0.8em;
+        margin: 5px;
     }
 
+    &--contenido {
+        padding: 5px;
+    }
+
+    img {
+        max-width: 80%;
+        margin: auto;
+    }
+}
+@media screen and (max-width:1060px) {
+    .carrito {
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+        top:5%;
+        left: 100%;
+        transition: .3s ease-in;
+
+        &__flexSnacks {
+            margin: 10px 5px;
+            overflow: scroll;
+
+            
+        }
+    }
+    .carrito.ver-en-mobile {
+        visibility: visible;
+        opacity: 1;
+        position: fixed;
+        left: 5%;
+        
+
+        &__flexSnacks {
+            margin: 10px 5px;
+            overflow: scroll;
+
+            
+        }
+    }
+    .snacks__item {
+        width: 100%;
+    }
 }
 
 .input_escondido {

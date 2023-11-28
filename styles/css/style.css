@@ -82,7 +82,7 @@ select#select__funcion {
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E3A446ff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
-.boton, .mostrar-platea, .boton_pagar, input#entradas,
+.boton, .mostrar-platea, .mostrar-snacks, .boton_pagar, input#entradas,
 input#boton__entradas, select#select__pelicula,
 select#select__funcion {
   display: block;
@@ -164,16 +164,16 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin-right: 10px;
 }
 
-.mostrar-platea {
+.mostrar-platea, .mostrar-snacks {
   cursor: pointer;
   background-color: var(--hunyadi-yellow);
   display: none;
 }
-.mostrar-platea i {
+.mostrar-platea i, .mostrar-snacks i {
   margin-right: 10px;
 }
 @media screen and (max-width: 1060px) {
-  .mostrar-platea {
+  .mostrar-platea, .mostrar-snacks {
     display: block;
   }
 }
@@ -807,8 +807,8 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 @media screen and (max-width: 1060px) {
   .cartelera__div--imagen {
-    width: 45%;
-    min-width: 42%;
+    width: 60%;
+    min-width: 58%;
     margin-right: 2%;
     position: relative;
   }
@@ -1008,9 +1008,10 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .contenedor-platea.full {
     visibility: visible;
     opacity: 1;
-    width: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    width: 90%;
+    height: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
     left: 50%;
     transform: translateX(-50%) scale(1);
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
@@ -1179,34 +1180,52 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin: 10px 20px;
   display: flex;
   flex-wrap: wrap;
-  color: white;
 }
-.carrito__flexSnacks .snacks__item {
+
+.snacks__item {
   margin: 5px;
   display: flex;
   width: 23%;
 }
-.carrito__flexSnacks .snacks__item p {
+.snacks__item p {
   font-size: 0.8em;
   margin: 5px;
 }
-.carrito__flexSnacks .snacks__item--contenido {
+.snacks__item--contenido {
   padding: 5px;
 }
-.carrito__flexSnacks .snacks__item img {
+.snacks__item img {
   max-width: 80%;
   margin: auto;
 }
+
 @media screen and (max-width: 1060px) {
+  .carrito {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 5%;
+    left: 100%;
+    transition: 0.3s ease-in;
+  }
   .carrito__flexSnacks {
     margin: 10px 5px;
     overflow: scroll;
   }
-  .carrito__flexSnacks .snacks__item {
+  .carrito.ver-en-mobile {
+    visibility: visible;
+    opacity: 1;
+    position: fixed;
+    left: 5%;
+  }
+  .carrito.ver-en-mobile__flexSnacks {
+    margin: 10px 5px;
+    overflow: scroll;
+  }
+  .snacks__item {
     width: 100%;
   }
 }
-
 .input_escondido {
   display: none;
 }

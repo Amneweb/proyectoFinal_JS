@@ -591,8 +591,11 @@ const sweetCantidad = (condicion) => {
 function mostrarSnacks() {
     document.querySelector("#botones").remove();
     document.querySelector("#advertencia").remove();
+    document.querySelector("#mostrar-platea").style["display"]="none";
     document.querySelector("#contenedor-platea").style["display"] = "none";
     BOTON_PAGAR(".entradas__resumen");
+    document.querySelector("#mostrar-snacks").addEventListener("click",()=>{
+        document.querySelector(".carrito").classList.add("ver-en-mobile")});
     document.querySelector(".carrito").innerHTML = `
         <h3>¿querés agregar snacks?</h3>
         <p>Elegí el que quieras o completá la compra de entradas sin snacks haciendo click en el botón TERMINAR</p>
@@ -662,7 +665,7 @@ function dibujarBotones() {
     BOTONES.append(BOTON_CAMBIAR);
     FRAGMENTO.appendChild(BOTONES);
     BOTON_ACEPTAR.addEventListener("click", () => {
-        document.querySelector("#mostrar-platea").style["display"]="none";
+        
         mostrarSnacks();
     });
     BOTON_CAMBIAR.addEventListener("click", () => {
@@ -696,6 +699,7 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran en la platea.</p></div>
                 </div>
                 <button id="mostrar-platea" class="mostrar-platea"><i class="fa-solid fa-braille"></i>Ver platea</button>
+                <button id="mostrar-snacks" class="mostrar-snacks"><i class="fa-solid fa-cookie-bite"></i>Ver snacks</button>
                 </div>`;
                 const mostrarPlatea = document.querySelector("#mostrar-platea");
                 mostrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.add("full"));

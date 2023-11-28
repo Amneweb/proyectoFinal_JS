@@ -7,11 +7,11 @@ botonEntradas.forEach((element) => element.addEventListener("click", () => {
 const botonAbrir = document.querySelector("#boton-abrir-nav");
 const botonCerrar= document.querySelector("#boton-cerrar-nav");
 const navegacion=document.querySelector (".nav");
-const enlaces=document.querySelectorAll(".nav__a");
+const enlaces=document.querySelectorAll(".nav__a"); 
 botonAbrir.addEventListener("click",()=>navegacion.classList.add("visible"));
 botonCerrar.addEventListener("click",()=>navegacion.classList.remove("visible"));
 enlaces.forEach((enlace)=> enlace.addEventListener("click",()=>navegacion.classList.remove("visible"))) ;
-
+document.querySelector("#boton-entradas").addEventListener("click",()=>navegacion.classList.remove("visible")) ;
 pelis.forEach((elemento) => {
     const peliculaEnCartelera = document.createElement("div");
     peliculaEnCartelera.className = "cartelera__div--imagen";
