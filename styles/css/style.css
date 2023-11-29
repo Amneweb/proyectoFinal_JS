@@ -1197,7 +1197,21 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin: auto;
 }
 
+.cerrar-carrito {
+  display: none;
+  margin: 10px auto auto auto;
+  border: solid 1px green;
+  border-radius: 5px;
+  background-color: white;
+  padding: 0.2rem;
+  right: 2%;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1060px) {
+  .cerrar-carrito {
+    display: block;
+  }
   .carrito {
     visibility: hidden;
     opacity: 0;
@@ -1216,6 +1230,7 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     opacity: 1;
     position: fixed;
     left: 5%;
+    width: 90%;
   }
   .snacks__item {
     width: 100%;

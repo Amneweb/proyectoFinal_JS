@@ -390,11 +390,17 @@ function dibujarSnacksElegidos() {
         resultados[0].forEach((elemento) => {
             const snacksDIV = document.createElement("div");
             snacksDIV.classList.add("lista-snacks");
-            snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p><button class="basura" id="borrar_${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
+            snacksDIV.innerHTML = `<img src="assets/imagenes/${elemento[0].id}.png"><p>${elemento[1]} x ${elemento[0].nombre}</p>
+            <button class="basura" id="sumar_${elemento[0].id}"><i class="fa-regular fa-square-plus"></i></button>
+            <button class="basura" id="borrar_${elemento[0].id}"><i class="fa-solid fa-trash-can"></i></button>`;
             listadoSnacks.appendChild(snacksDIV);
             document.querySelector(`#borrar_${elemento[0].id}`).addEventListener("click", () => {
                 borrarCarritoSnacks(elemento[0].id);
             });
+            document.querySelector(`#sumar_${elemento[0].id}`).addEventListener("click", () => {
+                generarCarritoSnacks(elemento[0].id);
+                dibujarSnacksElegidos(elemento[0].id);
+            })
         });
         const snacksTotales = document.createElement("div");
         snacksTotales.id = "a-pagar";
@@ -603,14 +609,18 @@ function mostrarSnacks() {
         document.querySelector(".carrito").classList.add("ver-en-mobile")});
     document.querySelector(".carrito").innerHTML = `
         <h3>¿querés agregar snacks?</h3>
-        <p>Elegí el que quieras o completá la compra de entradas sin snacks haciendo click en el botón TERMINAR</p>
-        <div class="carrito__flexSnacks"></div>`;
+        <p>Elegí el snack que quieras haciendo click en el botón correspondiente (luego podrás modificar cantidades en el carrito de compra) o completá la compra de entradas sin snacks haciendo click en el botón PAGAR</p>
+       <p> <button id="cerrar-carrito" class="cerrar-carrito">Cerrar ☑️</button></p>
+        <div class="carrito__flexSnacks"></div>
+       `;
     snacks.forEach((element) => {
         document.querySelector(".carrito__flexSnacks").appendChild(dibujarSnacksEnEntradas(element));
         document.querySelector(`#${element.id}`).addEventListener("click", (event) => {
             generarCarritoSnacks(event.target.id);
             dibujarSnacksElegidos(event.target.id);
         });
+        const cerrarCarrito = document.querySelector("#cerrar-carrito");
+        cerrarCarrito.addEventListener("click",()=>document.querySelector(".carrito").classList.remove("ver-en-mobile"))
     });
 }
 
