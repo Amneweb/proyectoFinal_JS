@@ -594,6 +594,11 @@ function mostrarSnacks() {
     document.querySelector("#mostrar-platea").style["display"]="none";
     document.querySelector("#contenedor-platea").style["display"] = "none";
     BOTON_PAGAR(".entradas__resumen");
+    const mostrarSN = document.createElement("button");
+    mostrarSN.id="mostrar-snacks";
+    mostrarSN.classList.add("mostrar-snacks");
+    mostrarSN.innerHTML='<i class="fa-solid fa-cookie-bite"></i>Ver snacks';
+    document.querySelector(".entradas__izquierda").append(mostrarSN);
     document.querySelector("#mostrar-snacks").addEventListener("click",()=>{
         document.querySelector(".carrito").classList.add("ver-en-mobile")});
     document.querySelector(".carrito").innerHTML = `
@@ -699,8 +704,7 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran en la platea.</p></div>
                 </div>
                 <button id="mostrar-platea" class="mostrar-platea"><i class="fa-solid fa-braille"></i>Ver platea</button>
-                <button id="mostrar-snacks" class="mostrar-snacks"><i class="fa-solid fa-cookie-bite"></i>Ver snacks</button>
-                </div>`;
+                `;
                 const mostrarPlatea = document.querySelector("#mostrar-platea");
                 mostrarPlatea.addEventListener("click",()=> {
                     document.querySelector("#contenedor-platea").style['display']="block";
