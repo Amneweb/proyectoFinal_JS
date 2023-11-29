@@ -702,7 +702,10 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <button id="mostrar-snacks" class="mostrar-snacks"><i class="fa-solid fa-cookie-bite"></i>Ver snacks</button>
                 </div>`;
                 const mostrarPlatea = document.querySelector("#mostrar-platea");
-                mostrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.add("full"));
+                mostrarPlatea.addEventListener("click",()=> {
+                    document.querySelector("#contenedor-platea").style['display']="block";
+                    document.querySelector("#contenedor-platea").classList.add("full");
+                } )
 }
 
 const coordenadas = (id) => {
