@@ -722,6 +722,14 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   color: #eeeeee;
 }
 
+@media screen and (max-width: 1060px) {
+  .section__titulo--entradas {
+    margin-bottom: 10px;
+  }
+  .section__titulo--entradas h2 {
+    font-size: 1.5em;
+  }
+}
 @keyframes cerrar-entradas {
   from {
     -ms-transform: rotate(0);
@@ -802,6 +810,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   text-shadow: 2px 2px 3px #000000;
   color: #ffffff;
 }
+@media screen and (max-width: 1060px) {
+  .cartelera__icono {
+    padding: 0;
+  }
+}
 .cartelera__iconoi {
   margin: 50% auto;
 }
@@ -845,8 +858,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 
 @media screen and (max-width: 1060px) {
-  .to-right--cartelera,
-  .to-right--snacks,
   .to-left--cartelera,
   .to-left--snacks {
     display: none;
@@ -922,6 +933,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .resumen__datospeli .datospeli__item {
   color: var(--smoky-black);
 }
+@media screen and (max-width: 1060px) {
+  .resumen__datospeli {
+    padding: 0;
+  }
+}
 
 .datospeli__item {
   color: #eeeeee;
@@ -943,6 +959,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 .entradas form {
   text-align: center;
+}
+@media screen and (max-width: 1060px) {
+  .entradas {
+    padding: 10px 20px;
+  }
 }
 
 .entradas__cantidad {
@@ -981,6 +1002,14 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   margin-right: 10px;
 }
 
+@media screen and (max-width: 1060px) {
+  p {
+    padding: 0;
+  }
+  p.aclaracion {
+    display: none;
+  }
+}
 .cerrar-platea {
   display: none;
 }
@@ -1024,6 +1053,10 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     padding: 0.2rem;
     right: 2%;
     cursor: pointer;
+  }
+  .entradas__resumen h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
   }
 }
 /*-------------SALAS --------------------*/
@@ -1186,11 +1219,11 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   width: 23%;
 }
 .snacks__item p {
-  font-size: 0.8em;
+  font-size: 1em;
   margin: 5px;
 }
 .snacks__item--contenido {
-  padding: 5px;
+  padding: 20px;
 }
 .snacks__item img {
   max-width: 80%;
@@ -1216,19 +1249,26 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     visibility: hidden;
     opacity: 0;
     position: fixed;
-    top: 5%;
+    top: 10%;
     left: 100%;
     transition: 0.3s ease-in;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
   }
   .carrito__flexSnacks {
     margin: 10px 5px;
     overflow: scroll;
     flex-wrap: nowrap;
   }
+  .carrito h3 {
+    display: none;
+  }
+  .carrito p {
+    font-size: 0.8em;
+  }
   .carrito.ver-en-mobile {
     visibility: visible;
     opacity: 1;
-    position: fixed;
+    position: absolute;
     left: 5%;
     width: 90%;
   }
@@ -1236,6 +1276,21 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
     width: 100%;
   }
 }
+.flechas {
+  text-align: right;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  display: none;
+}
+.flechas i {
+  margin-right: 5px;
+}
+@media screen and (max-width: 1060px) {
+  .flechas {
+    display: block;
+  }
+}
+
 .input_escondido {
   display: none;
 }
@@ -1381,6 +1436,14 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   color: #eeeeee;
 }
 
+@media screen and (max-width: 1060px) {
+  .footer {
+    flex-wrap: wrap;
+  }
+  .footer div {
+    width: 100%;
+  }
+}
 .contenedor-platea {
   width: auto;
   background-color: white;

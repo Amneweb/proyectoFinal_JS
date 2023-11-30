@@ -332,6 +332,14 @@ transform:scale(0.5);
     }
 
 }
+@media screen and (max-width:1060px){
+    .section__titulo--entradas {
+margin-bottom:10px;
+h2 {
+    font-size:1.5em;
+}
+    }
+}
 
 @keyframes cerrar-entradas {
     from {
@@ -427,7 +435,9 @@ transform:scale(0.5);
         padding-top: 15%;
         text-shadow: 2px 2px 3px #000000;
         color: #ffffff;
-
+@media screen and (max-width:1060px) {
+    padding:0;
+}
         &i {
             margin: 50% auto;
         }
@@ -474,8 +484,7 @@ transform:scale(0.5);
     left: 30px;
 }
 @media screen and (max-width:1060px){
-    .to-right--cartelera,
-    .to-right--snacks,
+
     .to-left--cartelera,
 .to-left--snacks
      {
@@ -558,6 +567,9 @@ margin-top:2%;
     .datospeli__item {
         color: var(--smoky-black);
     }
+    @media screen and (max-width:1060px) {
+        padding:0;
+    }
 }
 
 .datospeli {
@@ -586,6 +598,9 @@ margin-top:2%;
 
     form {
         text-align: center;
+    }
+    @media screen and (max-width:1060px) {
+        padding:10px 20px;
     }
 }
 
@@ -628,6 +643,14 @@ margin-top:2%;
         }
     }
     
+}
+@media screen and (max-width:1060px) {
+    p {
+        padding:0;
+        &.aclaracion {
+            display:none;
+        }
+    }
 }
 
 .cerrar-platea {
@@ -673,6 +696,12 @@ margin-top:2%;
         padding:0.2rem;
         right:2%;
         cursor:pointer;
+    }
+    .entradas__resumen {
+        h3 {
+            font-size:1em;
+            margin-bottom:0.5em;
+        }
     }
 
 }
@@ -880,12 +909,12 @@ padding:20px;
     width: 23%;
 
     p {
-        font-size: 0.8em;
+        font-size: 1em;
         margin: 5px;
     }
 
     &--contenido {
-        padding: 5px;
+        padding: 20px;
     }
 
     img {
@@ -911,9 +940,10 @@ padding:20px;
         visibility: hidden;
         opacity: 0;
         position: fixed;
-        top:5%;
+        top:10%;
         left: 100%;
         transition: .3s ease-in;
+        box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
 
         &__flexSnacks {
             margin: 10px 5px;
@@ -921,16 +951,34 @@ padding:20px;
             flex-wrap: nowrap;
             
         }
+        h3 {
+            display:none;
+        }
+        p {
+            font-size:0.8em;
+        }
     }
     .carrito.ver-en-mobile {
         visibility: visible;
         opacity: 1;
-        position: fixed;
+        position: absolute;
         left: 5%;
         width:90%;
     }
     .snacks__item {
         width: 100%;
+    }
+}
+.flechas {
+    text-align:right;
+    margin-bottom: 0;
+    padding-bottom:0;
+    i {
+        margin-right:5px;
+    }
+    display:none;
+    @media screen and (max-width:1060px) {
+        display:block;
     }
 }
 
@@ -1067,6 +1115,7 @@ margin:auto;
 }
 .footer {
     display:flex;
+    
 }
 .contacto--datos {
     width:30%;
@@ -1076,4 +1125,13 @@ margin:auto;
 }
 .footer p {
     color:#eeeeee;
+}
+
+@media screen and (max-width:1060px) {
+    .footer {
+        flex-wrap: wrap;
+    }
+    .footer div {
+        width:100%;
+    }
 }

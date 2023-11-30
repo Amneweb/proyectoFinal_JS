@@ -599,19 +599,22 @@ function mostrarSnacks() {
     document.querySelector("#advertencia").remove();
     document.querySelector("#mostrar-platea").style["display"]="none";
     document.querySelector("#contenedor-platea").style["display"] = "none";
-    BOTON_PAGAR(".entradas__resumen");
+    
     const mostrarSN = document.createElement("button");
     mostrarSN.id="mostrar-snacks";
     mostrarSN.classList.add("mostrar-snacks");
-    mostrarSN.innerHTML='<i class="fa-solid fa-cookie-bite"></i>Ver snacks';
+    mostrarSN.innerHTML='<i class="fa-solid fa-cookie-bite"></i>Click si querés comprar snacks';
     document.querySelector(".entradas__izquierda").append(mostrarSN);
+    BOTON_PAGAR(".entradas__izquierda");
     document.querySelector("#mostrar-snacks").addEventListener("click",()=>{
         document.querySelector(".carrito").classList.add("ver-en-mobile")});
     document.querySelector(".carrito").innerHTML = `
         <h3>¿querés agregar snacks?</h3>
-        <p>Elegí el snack que quieras haciendo click en el botón correspondiente (luego podrás modificar cantidades en el carrito de compra) o completá la compra de entradas sin snacks haciendo click en el botón PAGAR</p>
-       <p> <button id="cerrar-carrito" class="cerrar-carrito">Cerrar ☑️</button></p>
-        <div class="carrito__flexSnacks"></div>
+        <p>Elegí los que te gustan, luego podrás modificar cantidades.</p>
+       <button id="cerrar-carrito" class="cerrar-carrito">Listo, ya elegí ☑️</button>
+       <p class="flechas"><i class="fa-solid fa-arrow-left-long"></i><i class="fa-solid fa-arrow-right-long"></i></p>
+        <div class="carrito__flexSnacks">
+        </div>
        `;
     snacks.forEach((element) => {
         document.querySelector(".carrito__flexSnacks").appendChild(dibujarSnacksEnEntradas(element));
@@ -713,7 +716,7 @@ function dibujarEntradasResumen(ENTRADAS_RESUMEN, carrito) {
                 <div class="datospeli__item datospeli__item--left">Asientos</div>
                 <div class="datospeli__item datospeli__item--right asientos__elegidos"><p class="aclaracion"><i class="fa-solid fa-circle-exclamation"></i>Elegir butacas haciendo click en los asientos libres que se muestran en la platea.</p></div>
                 </div>
-                <button id="mostrar-platea" class="mostrar-platea"><i class="fa-solid fa-braille"></i>Ver platea</button>
+                <button id="mostrar-platea" class="mostrar-platea"><i class="fa-solid fa-braille"></i>Ver platea y elegir asientos</button>
                 `;
                 const mostrarPlatea = document.querySelector("#mostrar-platea");
                 mostrarPlatea.addEventListener("click",()=> {
