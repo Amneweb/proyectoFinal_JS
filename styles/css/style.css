@@ -627,6 +627,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 .bienvenidos__span {
   color: var(--hunyadi-yellow);
 }
+.bienvenidos h2 {
+  margin-bottom: 2rem;
+  color: var(--rojo-butaca);
+}
+.bienvenidos p {
+  margin-bottom: 1rem;
+}
 @media screen and (max-width: 1060px) {
   .bienvenidos {
     flex-wrap: wrap;
@@ -636,6 +643,19 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   .bienvenidos__h1 {
     width: 100%;
   }
+}
+
+.i-en-bienvenidos {
+  margin-right: 10px;
+}
+
+blockquote {
+  padding: 2rem;
+  background-color: #f5f5f5;
+  margin: 2rem 0;
+}
+blockquote p:first-child {
+  margin-bottom: 2rem;
 }
 
 .negro {
