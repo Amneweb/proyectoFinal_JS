@@ -278,11 +278,14 @@ blockquote {
     background-color: #f5f5f5;
     color: var(--smoky-black);
 }
+.snap {
+    scroll-margin-top:90px;
+    scroll-snap-align:start;
+}
 
 .section__titulo {
     padding: 80px 50px 20px 0px;
-    margin: auto 50px;
-    scroll-margin-top:60px;
+    margin: auto 50px;   
 
     i {
         margin-right: 30px;
@@ -1133,17 +1136,46 @@ margin:auto;
 }
 .footer {
     display:flex;
+    padding-bottom:80px;
     
 }
 .contacto--datos {
-    width:30%;
+    width:60%;
+    h2 {
+        border-bottom:dotted 10px var(--hunyadi-yellow);
+        padding-bottom:20px;
+    }
 }
 .contacto--form {
-    width:60%;
+    width:30%;
+    h3 {
+        color:var(--hunyadi-yellow);
+    }
 }
 .footer p {
-    color:#eeeeee;
+    color:#c0c0c0;
+    margin:20px 100px 20px 50px;
+    text-align: justify; 
 }
+.footer h2 {
+    color:var(--hunyadi-yellow);
+}
+.footer__estructura {
+    display:grid;
+    grid-template-columns:20% 80%;
+    row-gap: 0.5rem;
+    i {
+        font-size:2em;
+    }
+}
+.final {
+    padding:30px;
+    background-color:#f5f5f5;
+    p {
+        text-align: center;
+    }
+}
+
 
 @media screen and (max-width:1060px) {
     .footer {
@@ -1151,5 +1183,8 @@ margin:auto;
     }
     .footer div {
         width:100%;
+    }
+    .footer p {
+        margin:20px;
     }
 }

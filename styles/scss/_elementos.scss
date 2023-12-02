@@ -104,6 +104,13 @@ input#boton__entradas {
     display:block;
   }
 }
+.logo__a {
+  text-decoration:none;
+  color:white;
+  &:hover, :visited, :active {
+    color:white;
+  }
+}
 
 
 .basura {

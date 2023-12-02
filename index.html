@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <div class="logo">
-            <p class="logo__p">Vintage</p>
+            <p class="logo__p"><a class="logo__a" href="#top">Vintage</a></p>
         </div>
         <button title="boton abrir menu" class="header__button--abrir" id="boton-abrir-nav"><i class="fa-solid fa-bars"></i></button>
         <nav class="nav">
@@ -37,7 +37,7 @@
         </nav>
         
     </header>
-    <section class="hero">
+    <section class="hero" id="top">
         <div class="hero__div">
             
                 <button class="comprar_entradas hero__button--principal">Comprá tus entradas</button>
@@ -70,7 +70,7 @@
         <div id="datosPelicula"></div>
     </section>
 
-    <section class="negro" id="cartelera">
+    <section class="negro snap" id="cartelera">
         <section class="section__titulo section__titulo--cartelera">
             <h2><i class="fa-solid fa-clapperboard"></i>cartelera</h2>
         </section>
@@ -82,7 +82,7 @@
             </div>
         </section>
     </section>
-    <section class="section__titulo section__titulo--salas" id="salas">
+    <section class="section__titulo section__titulo--salas snap" id="salas">
         <h2><i class="fa-solid fa-people-roof"></i>Conocé nuestras salas</h2>
     </section>
     <section class="main salas">
@@ -167,7 +167,7 @@
             </div>
         </div>
     </section>
-    <section class="rojo" id="snacks">
+    <section class="rojo snap" id="snacks">
         <section class="section__titulo section__titulo--snacks">
             <h2><i class="fa-solid fa-cookie-bite"></i>Snacks</h2>
         </section>
@@ -188,7 +188,7 @@
             </section>
         </section>
     </section>
-    <section class="bienvenidos" id="proyecto">
+    <section class="bienvenidos snap" id="proyecto">
 
            
 
@@ -207,20 +207,37 @@
 
     </section>
     <section class="negro">
-        <footer class="footer" id="contacto">
-            
-            <div class="contacto--form">
-                <section class="section__titulo section__titulo--contacto">
-                <h2><i class="fa-solid fa-address-card"></i>Contacto</h2>
-            </section>
-            </div>
+        <footer class="footer snap" id="contacto">
             <div class="contacto--datos">
                 <section class="section__titulo section__titulo--contacto">
                 <h2><i class="fa-solid fa-user-pen"></i>Sobre mí</h2>
             </section>
-            
+            <p>Mi nombre es Amneris Calle y en el momento de realizar este trabajo estoy cursando la carrera de Full Stack Developer en Coderhouse. De profesión Ingeniera Civil, luego de recibirme trabajé sólo 2 años, hasta que nació mi primer hijo. La vida me llevó por otros caminos, pero programación fue siempre mi hobby favorito.</p>
+            <p>Aprendí HTML y CSS por mi cuenta y realicé varios sitios web, algunos dinámicos con bases de datos MySQL y PHP, pero siempre como extras a mi trabajo principal en la organización de eventos del deporte de la vela.</p> 
+            <p class="bienvenidos__p--vintage">Mi desafío actual es terminar la carrera y convertir mi hobby en trabajo, ya sea freelance o fijo.</p>
             </div>
+            <div class="contacto--form">
+                <section class="section__titulo section__titulo--contacto">
+                <h3><i class="fa-solid fa-address-card"></i>Contacto</h3>
+            </section>
+            <div class="footer__estructura">
+                
+            <div class="footer__icono"><p><i class="fa-brands fa-instagram"></i></p></div>
+            <div class="footer__contenido"><p>amne.calle</p></div>
+        
+            <div class="footer__icono"><p><i class="fa-brands fa-facebook"></i></p></div>
+            <div class="footer__contenido"><p>amneris.calle</p></div>
+       
+            <div class="footer__icono"><p><i class="fa-regular fa-paper-plane"></i></p></div>
+            <div class="footer__contenido"><p>amneris.calle(at)gmail.com</p></div>
+            <div class="footer__icono"><p><i class="fa-brands fa-github"></i></p></div>
+            <div class="footer__contenido"><p>Amneweb</p></div>
+           
+            </div>
+        </div>
+        
         </footer>
+        <div class="final"><p>Realizado en Buenos Aires, Argentina | Noviembre de 2023 | &copy; VINTAGE CINES</p></div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="scripts/main.js"></script>
