@@ -41,11 +41,6 @@ h1 {
   font-size: var(--size-h1);
   color: var(--smoky-black);
 }
-@media screen and (max-width: 1060px) {
-  h1 {
-    font-size: 2em;
-  }
-}
 
 h2,
 h3,
@@ -166,16 +161,19 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 
 .mostrar-platea, .mostrar-snacks {
   cursor: pointer;
-  background-color: var(--hunyadi-yellow);
   display: none;
 }
 .mostrar-platea i, .mostrar-snacks i {
   margin-right: 10px;
 }
-@media screen and (max-width: 1060px) {
-  .mostrar-platea, .mostrar-snacks {
-    display: block;
-  }
+
+.mostrar-platea {
+  background-color: var(--hunyadi-yellow);
+}
+
+.mostrar-snacks {
+  background-color: var(--rojo-butaca);
+  color: white;
 }
 
 .logo__a {
@@ -193,11 +191,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-color: transparent;
   cursor: pointer;
   border: none;
-}
-@media screen and (max-width: 1060px) {
-  .basura i {
-    font-size: 1.5em;
-  }
 }
 
 /* ------------   FIN botones ---------- */
@@ -293,63 +286,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   font-size: 1.5rem;
 }
 
-@media screen and (max-width: 1060px) {
-  .header__button--abrir,
-  .header__button--cerrar {
-    display: block;
-  }
-  .nav {
-    opacity: 0;
-    visibility: hidden;
-    justify-content: start;
-    flex-direction: column;
-    position: absolute;
-    top: 5rem;
-    bottom: 0;
-    right: 0;
-    background-color: var(--smoky-black);
-    padding: 3rem;
-    align-items: end;
-    gap: 1rem;
-    height: 100vh;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-  }
-  .nav__ul {
-    flex-direction: column;
-    align-items: end;
-    order: 2;
-  }
-  .nav.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-  .logo__p {
-    font-family: var(--logo);
-    font-size: var(--size-h3);
-    color: white;
-  }
-  .logo__p::after {
-    content: "";
-    background-image: url(../../assets/imagenes/estrellaVintage.png);
-    width: 20px;
-    height: 40px;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    display: inline-block;
-    background-position: top right;
-    left: 0;
-  }
-  .header__button--entradas {
-    padding: 1rem 1rem;
-    font-size: 1.1em;
-    background-color: var(--hunyadi-yellow);
-  }
-  .header__button--entradas:hover {
-    background-color: white;
-    color: var(--rojo-butaca);
-    animation: transicion-entradas 0.5s;
-  }
-}
 /* ------------ FIN  menu superior ---------- */
 .title-final {
   font-family: var(--logo);
@@ -464,11 +400,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   padding: 5rem 4rem;
   justify-content: space-evenly;
 }
-@media screen and (max-width: 1060px) {
-  .main {
-    padding: 4rem 1rem;
-  }
-}
 
 .secciones-entradas-api {
   visibility: hidden;
@@ -515,31 +446,13 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   background-repeat: no-repeat;
   background-position: top right;
 }
-@media screen and (max-width: 1060px) {
-  .section__titulo--api h4 {
-    font-size: 2em;
-  }
-  .section__titulo--api h4:after {
-    display: none;
-  }
-}
 
 #datosPelicula {
   margin: 40px;
 }
-@media screen and (max-width: 1060px) {
-  #datosPelicula {
-    margin: 20px;
-  }
-}
 
 #actores {
   margin: 40px;
-}
-@media screen and (max-width: 1060px) {
-  #actores {
-    margin: 20px;
-  }
 }
 
 .contenedor_tarjetas {
@@ -569,11 +482,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
   max-width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
-@media screen and (max-width: 1060px) {
-  .card_actor {
-    width: 45%;
-  }
 }
 
 .section__entradas--cerrar {
@@ -641,16 +549,6 @@ select::-ms-expand { /*para sacar flecha en explorers viejos*/
 }
 .bienvenidos p {
   margin-bottom: 1rem;
-}
-@media screen and (max-width: 1060px) {
-  .bienvenidos {
-    flex-wrap: wrap;
-    margin: 3rem;
-    padding: 2rem;
-  }
-  .bienvenidos__h1 {
-    width: 100%;
-  }
 }
 
 .i-en-bienvenidos {
@@ -723,11 +621,6 @@ blockquote p:first-child {
   background-repeat: no-repeat;
   background-position: top right;
 }
-@media screen and (max-width: 1060px) {
-  .section__titulo--entradas h2::after {
-    display: none;
-  }
-}
 .section__titulo--entradas i.cerrar {
   font-size: var(--size-h3);
 }
@@ -755,14 +648,6 @@ blockquote p:first-child {
   color: #eeeeee;
 }
 
-@media screen and (max-width: 1060px) {
-  .section__titulo--entradas {
-    margin-bottom: 10px;
-  }
-  .section__titulo--entradas h2 {
-    font-size: 1.5em;
-  }
-}
 @keyframes cerrar-entradas {
   from {
     -ms-transform: rotate(0);
@@ -843,41 +728,8 @@ blockquote p:first-child {
   text-shadow: 2px 2px 3px #000000;
   color: #ffffff;
 }
-@media screen and (max-width: 1060px) {
-  .cartelera__icono {
-    padding: 0;
-  }
-}
 .cartelera__iconoi {
   margin: 50% auto;
-}
-@media screen and (max-width: 1060px) {
-  .cartelera__div--imagen {
-    width: 60%;
-    min-width: 58%;
-    margin-right: 2%;
-    position: relative;
-  }
-  .cartelera__div--overlay {
-    position: fixed;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    background-color: var(--rojo-butaca);
-    overflow: scroll;
-    transition: 0.5s ease;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 5;
-    transform: scale(0.5);
-  }
-  .cartelera__div--overlay.overlay_activa {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-    border-radius: 10px;
-  }
 }
 
 .to-right--cartelera,
@@ -890,12 +742,6 @@ blockquote p:first-child {
   left: 30px;
 }
 
-@media screen and (max-width: 1060px) {
-  .to-left--cartelera,
-  .to-left--snacks {
-    display: none;
-  }
-}
 .boton-cerrar-overlay, .boton-ver-overlay {
   background-color: transparent;
   -moz-appearance: none;
@@ -906,11 +752,6 @@ blockquote p:first-child {
   font-size: 1.5em;
   display: none;
   cursor: pointer;
-}
-@media screen and (max-width: 1060px) {
-  .boton-cerrar-overlay, .boton-ver-overlay {
-    display: block;
-  }
 }
 
 .boton-ver-overlay {
@@ -962,14 +803,10 @@ blockquote p:first-child {
 
 .resumen__datospeli {
   text-align: left;
+  column-gap: 10px;
 }
 .resumen__datospeli .datospeli__item {
   color: var(--smoky-black);
-}
-@media screen and (max-width: 1060px) {
-  .resumen__datospeli {
-    padding: 0;
-  }
 }
 
 .datospeli__item {
@@ -992,11 +829,6 @@ blockquote p:first-child {
 }
 .entradas form {
   text-align: center;
-}
-@media screen and (max-width: 1060px) {
-  .entradas {
-    padding: 10px 20px;
-  }
 }
 
 .entradas__cantidad {
@@ -1035,63 +867,10 @@ blockquote p:first-child {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 1060px) {
-  p {
-    padding: 0;
-  }
-  p.aclaracion {
-    display: none;
-  }
-}
 .cerrar-platea {
   display: none;
 }
 
-@media screen and (max-width: 1060px) {
-  .entradas {
-    flex-wrap: wrap;
-  }
-  .entradas__izquierda,
-  .entradas__derecha {
-    width: 100%;
-  }
-  .entradas__datospeli,
-  .entradas__imagen {
-    display: none;
-  }
-  .contenedor-platea {
-    position: fixed;
-    top: 5%;
-    visibility: hidden;
-    opacity: 0;
-    display: none;
-  }
-  .contenedor-platea.full {
-    visibility: visible;
-    opacity: 1;
-    width: auto;
-    height: 90%;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 5% auto 5% auto;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-    overflow: auto;
-  }
-  .cerrar-platea {
-    display: block;
-    margin: 10px auto auto auto;
-    border: solid 1px green;
-    border-radius: 5px;
-    background-color: transparent;
-    padding: 0.2rem;
-    right: 2%;
-    cursor: pointer;
-  }
-  .entradas__resumen h3 {
-    font-size: 1em;
-    margin-bottom: 0.5em;
-  }
-}
 /*-------------SALAS --------------------*/
 .salas__p--infantil::after, .salas__p--clasica::after, .salas__p--premium::after {
   content: "";
@@ -1127,12 +906,6 @@ blockquote p:first-child {
   padding: 40px;
   background-color: #f5f5f5;
 }
-@media screen and (max-width: 1060px) {
-  .salas__div {
-    grid-template-columns: 30% 70%;
-    padding: 20px;
-  }
-}
 
 .salas__item--info {
   padding: 20px;
@@ -1152,16 +925,6 @@ blockquote p:first-child {
 .salas__item--foto img {
   max-width: 100%;
   object-fit: cover;
-}
-@media screen and (max-width: 1060px) {
-  .salas__item--foto {
-    grid-area: 1/1/2/3;
-  }
-  .salas__item--foto img {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
 }
 
 .select {
@@ -1190,13 +953,6 @@ blockquote p:first-child {
 }
 .snacks__item--contenido {
   padding: 20px;
-}
-@media screen and (max-width: 1060px) {
-  .snacks__item {
-    width: 55%;
-    min-width: 52%;
-    margin: 2%;
-  }
 }
 .snacks__p {
   color: #eeeeee;
@@ -1274,41 +1030,6 @@ blockquote p:first-child {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1060px) {
-  .cerrar-carrito {
-    display: block;
-  }
-  .carrito {
-    visibility: hidden;
-    opacity: 0;
-    position: fixed;
-    top: 10%;
-    left: 100%;
-    transition: 0.3s ease-in;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-  }
-  .carrito__flexSnacks {
-    margin: 10px 5px;
-    overflow: scroll;
-    flex-wrap: nowrap;
-  }
-  .carrito h3 {
-    display: none;
-  }
-  .carrito p {
-    font-size: 0.8em;
-  }
-  .carrito.ver-en-mobile {
-    visibility: visible;
-    opacity: 1;
-    position: absolute;
-    left: 5%;
-    width: 90%;
-  }
-  .snacks__item {
-    width: 100%;
-  }
-}
 .flechas {
   text-align: right;
   margin-bottom: 0;
@@ -1317,11 +1038,6 @@ blockquote p:first-child {
 }
 .flechas i {
   margin-right: 5px;
-}
-@media screen and (max-width: 1060px) {
-  .flechas {
-    display: block;
-  }
 }
 
 .input_escondido {
@@ -1386,13 +1102,6 @@ blockquote p:first-child {
   width: 100%;
   column-gap: 4%;
 }
-@media screen and (max-width: 1060px) {
-  .datos_pelicula {
-    flex-direction: column;
-    padding: 0;
-    margin-top: 20px;
-  }
-}
 
 .poster_pelicula {
   width: 28%;
@@ -1400,19 +1109,9 @@ blockquote p:first-child {
 .poster_pelicula img {
   max-width: 100%;
 }
-@media screen and (max-width: 1060px) {
-  .poster_pelicula {
-    width: 100%;
-  }
-}
 
 .info_pelicula {
   width: 68%;
-}
-@media screen and (max-width: 1060px) {
-  .info_pelicula {
-    width: 100%;
-  }
 }
 
 .row_info_pelicula {
@@ -1462,25 +1161,17 @@ blockquote p:first-child {
   width: 60%;
 }
 .contacto--datos h2 {
-  border-bottom: dotted 10px var(--hunyadi-yellow);
+  border-bottom: dotted 10px;
   padding-bottom: 20px;
 }
 
 .contacto--form {
   width: 30%;
 }
-.contacto--form h3 {
-  color: var(--hunyadi-yellow);
-}
 
 .footer p {
-  color: #c0c0c0;
   margin: 20px 100px 20px 50px;
   text-align: justify;
-}
-
-.footer h2 {
-  color: var(--hunyadi-yellow);
 }
 
 .footer__estructura {
@@ -1492,25 +1183,14 @@ blockquote p:first-child {
   font-size: 2em;
 }
 
-.final {
-  padding: 30px;
-  background-color: #f5f5f5;
+.final-footer {
+  padding: 50px;
 }
-.final p {
+.final-footer p {
   text-align: center;
+  color: #eeeeee;
 }
 
-@media screen and (max-width: 1060px) {
-  .footer {
-    flex-wrap: wrap;
-  }
-  .footer div {
-    width: 100%;
-  }
-  .footer p {
-    margin: 20px;
-  }
-}
 .contenedor-platea {
   width: auto;
   background-color: white;
@@ -1570,6 +1250,291 @@ blockquote p:first-child {
   margin-top: 10px;
   padding: 10px;
   text-align: center;
+}
+
+@media screen and (max-width: 1060px) {
+  h1 {
+    font-size: 2em;
+    padding-top: 50px;
+  }
+  .header__button--abrir,
+  .header__button--cerrar {
+    display: block;
+  }
+  .nav {
+    opacity: 0;
+    visibility: hidden;
+    justify-content: start;
+    flex-direction: column;
+    position: absolute;
+    top: 5rem;
+    bottom: 0;
+    right: 0;
+    background-color: var(--smoky-black);
+    padding: 3rem;
+    align-items: end;
+    gap: 1rem;
+    height: 100vh;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  }
+  .nav__ul {
+    flex-direction: column;
+    align-items: end;
+    order: 2;
+  }
+  .nav.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .logo__p {
+    font-family: var(--logo);
+    font-size: var(--size-h3);
+    color: white;
+  }
+  .logo__p::after {
+    content: "";
+    background-image: url(../../assets/imagenes/estrellaVintage.png);
+    width: 20px;
+    height: 40px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: top right;
+    left: 0;
+  }
+  .header__button--entradas {
+    padding: 1rem 1rem;
+    font-size: 1.1em;
+    background-color: var(--hunyadi-yellow);
+  }
+  .header__button--entradas:hover {
+    background-color: white;
+    color: var(--rojo-butaca);
+    animation: transicion-entradas 0.5s;
+  }
+  .main {
+    padding: 4rem 1rem;
+  }
+  .section__titulo--api h4 {
+    font-size: 2em;
+  }
+  .section__titulo--api h4:after {
+    display: none;
+  }
+  #datosPelicula {
+    margin: 20px;
+  }
+  #actores {
+    margin: 20px;
+  }
+  .card_actor {
+    width: 45%;
+  }
+  .bienvenidos {
+    flex-wrap: wrap;
+    margin: 3rem;
+    padding: 2rem;
+  }
+  .bienvenidos__h1 {
+    width: 100%;
+  }
+  .section__titulo--entradas h2::after {
+    display: none;
+  }
+  .section__titulo--entradas {
+    margin-bottom: 10px;
+    padding-top: 30px;
+  }
+  .section__titulo--entradas h2 {
+    font-size: 1.5em;
+  }
+  .cartelera__icono {
+    padding: 0;
+  }
+  .cartelera__div--imagen {
+    width: 60%;
+    min-width: 58%;
+    margin-right: 2%;
+    position: relative;
+  }
+  .cartelera__div--overlay {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: var(--rojo-butaca);
+    overflow: scroll;
+    transition: 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+    transform: scale(0.5);
+  }
+  .cartelera__div--overlay.overlay_activa {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    border-radius: 10px;
+  }
+  .to-left--cartelera,
+  .to-left--snacks {
+    display: none;
+  }
+  .boton-ver-overlay, .boton-cerrar-overlay {
+    display: block;
+  }
+  .resumen__datospeli {
+    padding: 0;
+  }
+  .entradas {
+    padding: 10px 20px;
+  }
+  .asientos__elegidos p {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+  .asientos__elegidos p.aclaracion {
+    display: none;
+  }
+  .lista-snacks p, .lista-snacks button {
+    font-size: 0.8em;
+  }
+  .entradas {
+    flex-wrap: wrap;
+  }
+  .entradas__izquierda,
+  .entradas__derecha {
+    width: 100%;
+  }
+  .entradas__datospeli,
+  .entradas__imagen {
+    display: none;
+  }
+  .contenedor-platea {
+    position: fixed;
+    top: 5%;
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+  }
+  .contenedor-platea.full {
+    visibility: visible;
+    opacity: 1;
+    width: auto;
+    height: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5% auto 5% auto;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+  .cerrar-platea {
+    display: block;
+    margin: 10px auto auto auto;
+    border: solid 1px green;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 0.2rem;
+    right: 2%;
+    cursor: pointer;
+  }
+  .entradas__resumen h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+  /*-------------SALAS --------------------*/
+  .salas__div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .salas__item--titulo,
+  .salas__item--info {
+    width: 100%;
+    padding-left: 0;
+  }
+  .salas__item--foto img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+  .snacks__item {
+    width: 55%;
+    min-width: 52%;
+    margin: 2%;
+  }
+  .cerrar-carrito {
+    display: block;
+  }
+  .carrito {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 10%;
+    left: 100%;
+    transition: 0.3s ease-in;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+  }
+  .carrito__flexSnacks {
+    margin: 10px 5px;
+    overflow: scroll;
+    flex-wrap: nowrap;
+  }
+  .carrito h3 {
+    display: none;
+  }
+  .carrito p {
+    font-size: 0.8em;
+  }
+  .carrito.ver-en-mobile {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    left: 5%;
+    width: 90%;
+  }
+  .snacks__item {
+    width: 100%;
+  }
+  .flechas {
+    display: block;
+  }
+  .datos_pelicula {
+    flex-direction: column;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .poster_pelicula {
+    width: 100%;
+  }
+  .info_pelicula {
+    width: 100%;
+  }
+  .footer {
+    flex-wrap: wrap;
+  }
+  .footer div {
+    width: 100%;
+  }
+  .footer p {
+    margin: 20px;
+  }
+  .basura i {
+    font-size: 1.5em;
+  }
+  .mostrar-platea, .mostrar-snacks {
+    display: block;
+  }
+  #botones {
+    flex-direction: column;
+  }
+  #botones .boton {
+    width: 100%;
+  }
+  .final-footer {
+    padding: 80px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

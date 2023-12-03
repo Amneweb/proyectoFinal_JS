@@ -94,15 +94,20 @@ input#boton__entradas {
 .mostrar-platea, .mostrar-snacks {
   @extend %inputs;
   cursor:pointer;
-  background-color: var(--hunyadi-yellow);
+  
   display:none;
   i {
     
     margin-right: 10px;
   }
-  @media screen and (max-width:1060px) {
-    display:block;
-  }
+  
+}
+.mostrar-platea {
+  background-color: var(--hunyadi-yellow);
+}
+.mostrar-snacks {
+  background-color:var(--rojo-butaca);
+  color:white;
 }
 .logo__a {
   text-decoration:none;
@@ -120,10 +125,6 @@ input#boton__entradas {
   background-color: transparent;
   cursor: pointer;
   border: none;
-  @media screen and (max-width:1060px) {
-    i {font-size: 1.5em;}
-    
-  }
 }
 /* ------------   FIN botones ---------- */
 /* ------------   menu superior ---------- */
@@ -232,72 +233,6 @@ align-items:center;
   font-size: 1.5rem;
 }
 
-@media screen and (max-width:1060px) {
-  .header__button--abrir,
-  .header__button--cerrar {
-    display:block;
-  }
-  .nav {
-    opacity:0;
-    visibility:hidden;
-    justify-content: start;
-    flex-direction:column;
-    position:absolute;
-    top:5rem;
-    bottom:0;
-    right:0;
-    background-color:var(--smoky-black);
-    padding:3rem;
-    align-items:end;
-    gap:1rem;
-    height:100vh;
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
-  }
-  .nav__ul {
-    flex-direction:column;
-    align-items: end;
-    order:2;
-  }
-  .nav.visible {
-    opacity:1;
-    visibility:visible;
-  }
-
-  .logo {
-
-    &__p {
-      font-family: var(--logo);
-      font-size: var(--size-h3);
-      color: white;
-  
-      &::after {
-        content: '';
-        background-image: url(../../assets/imagenes/estrellaVintage.png);
-        width: 20px;
-        height: 40px;
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        display: inline-block;
-        background-position: top right;
-        left: 0;
-      }
-  
-    }
-  }
-
-  .header__button--entradas {
-    padding: 1rem 1rem;
-    font-size: 1.1em;
-    background-color:var(--hunyadi-yellow);
-    
-
-    &:hover {
-      background-color: white;
-      color: var(--rojo-butaca);
-      animation: transicion-entradas 0.5s;
-    }
-  }
-}
 /* ------------ FIN  menu superior ---------- */
 
 

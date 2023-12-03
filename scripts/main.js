@@ -89,7 +89,10 @@ function dibujarPlatea(asientos) {
         cerrarPlatea.id="cerrar-platea";
         cerrarPlatea.classList.add("cerrar-platea");
         cerrarPlatea.innerText="CONFIRMAR Y CERRAR 👍";
-        cerrarPlatea.addEventListener("click",()=> document.querySelector("#contenedor-platea").classList.remove("full"));
+        cerrarPlatea.addEventListener("click",()=> {
+            document.querySelector("#mostrar-platea").style["display"]="none";
+            document.querySelector("#contenedor-platea").classList.remove("full"); 
+        }); 
         FRAGMENTO.append(cerrarPlatea);
     return FRAGMENTO;
 }
@@ -603,7 +606,7 @@ function mostrarSnacks() {
     const mostrarSN = document.createElement("button");
     mostrarSN.id="mostrar-snacks";
     mostrarSN.classList.add("mostrar-snacks");
-    mostrarSN.innerHTML='<i class="fa-solid fa-cookie-bite"></i>Click si querés comprar snacks';
+    mostrarSN.innerHTML='<i class="fa-solid fa-cookie-bite"></i>¿Querés comprar snacks?';
     document.querySelector(".entradas__izquierda").append(mostrarSN);
     BOTON_PAGAR(".entradas__izquierda");
     document.querySelector("#mostrar-snacks").addEventListener("click",()=>{

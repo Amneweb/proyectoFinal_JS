@@ -40,9 +40,7 @@ h1 {
     font-weight: var(--weight-h1);
     font-size: var(--size-h1);
     color:var(--smoky-black);
-    @media screen and (max-width:1060px) {
-        font-size:2em;
-    }
+    
 }
 
 h2,
